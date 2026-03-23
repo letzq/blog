@@ -1,22 +1,33 @@
 package com.xy.blog.controller;
 
 import com.xy.blog.framework.web.domain.Result;
-import com.xy.blog.system.domain.entity.SysUser;
-import com.xy.blog.system.service.ISysUserService;
+import com.xy.blog.system.dto.BlogUserCreateDto;
+import com.xy.blog.system.entity.po.BlogUser;
+import com.xy.blog.system.service.IBlogUserService;
+import com.xy.blog.system.vo.BlogUserVo;
+import jakarta.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 测试控制器。
+ */
 @RestController
 @RequestMapping("/test")
 @RequiredArgsConstructor
 public class TestController {
 
-    private final ISysUserService sysUserService;
+    private final IBlogUserService blogUserService;
 
+    /**
+     * 连通性测试接口。
+     */
     @GetMapping("/ping")
     public Result<Map<String, Object>> ping() {
         Map<String, Object> data = new HashMap<>();
@@ -26,9 +37,28 @@ public class TestController {
         return Result.success(data);
     }
 
+    /**
+     * 用户查询示例接口。
+     */
     @GetMapping("/user/demo")
-    public Result<SysUser> demoUser() {
-        SysUser user = sysUserService.getByUserName("admin");
+    public Result<BlogUser> demoUser() {
+        BlogUser user = blogUserService.getByUserName("admin");
         return Result.success(user);
+    }
+
+    /**
+     * 参数校验示例接口。
+     */
+    @PostMapping("/user/validate")
+    public Result<BlogUserCreateDto> validateUser(@RequestBody @Valid BlogUserCreateDto dto) {
+        return Result.success(dto);
+    }
+
+    /**
+     * 新增用户示例接口。
+     */
+    @PostMapping("/user/create")
+    public Result<BlogUserVo> createUser(@RequestBody @Valid BlogUserCreateDto dto) {
+        return Result.success(blogUserService.createUser(dto));
     }
 }

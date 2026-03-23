@@ -1,13 +1,68 @@
 spring:
   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 30
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:0}
+      timeout: 10s
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 2
+          max-wait: -1ms
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT:25}
+    username: ${MAIL_USER}
+    password: ${MAIL_PASS}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: false
+          timeout: 5000
+          connectiontimeout: 5000
+          writetimeout: 5000
   security:
     user:
       name: ${SECURITY_USERNAME}
       password: ${SECURITY_PASSWORD}
+
+token:
+  secret: ${TOKEN_SECRET}
+  expire-time: ${TOKEN_EXPIRE_TIME:120}
+  header: ${TOKEN_HEADER:Authorization}
+  prefix: ${TOKEN_PREFIX:Bearer }
+
+blog:
+  mail:
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT:25}
+    from: ${MAIL_FROM}
+    user: ${MAIL_USER}
+    pass: ${MAIL_PASS}
 
 logging:
   level:
