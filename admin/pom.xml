@@ -22,6 +22,16 @@
             <artifactId>common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.xy</groupId>
+            <artifactId>framework</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xy</groupId>
+            <artifactId>system</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
