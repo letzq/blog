@@ -44,7 +44,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     private static final long EMAIL_CODE_EXPIRE_MINUTES = 5L;
     private static final long EMAIL_SEND_LIMIT_SECONDS = 60L;
     private static final int LOGIN_CAPTCHA_LENGTH = 4;
-    private static final char[] CAPTCHA_CHARS = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
+    private static final char[] CAPTCHA_CHARS = "23456789qwertyuiopasdfghjklzxcvbnmABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
 
     private final IBlogUserService blogUserService;
     private final RedisCache redisCache;
@@ -53,6 +53,9 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     private final JwtProperties jwtProperties;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * 生成登录验证码。
+     */
     @Override
     public CaptchaVo generateLoginCaptcha() {
         String captchaCode = generateCaptchaCode(LOGIN_CAPTCHA_LENGTH);
@@ -91,9 +94,9 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
         }
 
         String code = generateNumericCode();
-        mailService.sendTextMail(email, resolveSubject(scene), buildContent(scene, code));
         redisCache.setCacheObject(buildCodeKey(scene, email), code, EMAIL_CODE_EXPIRE_MINUTES, TimeUnit.MINUTES);
         redisCache.setCacheObject(sendLimitKey, "1", EMAIL_SEND_LIMIT_SECONDS, TimeUnit.SECONDS);
+        mailService.sendTextMail(email, resolveSubject(scene), buildContent(scene, code));
     }
 
     @Override
@@ -107,6 +110,9 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
         validateEmailCode("LOGIN", email, dto.getCode(), true);
         return buildLoginVo(user);
     }
+    /**
+     * 注册前先校验一次邮箱验证码，校验成功后立即删除缓存避免重复使用。
+     */
 
     @Override
     public BlogUserVo register(RegisterDto dto) {

@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:classpath:mail-local.yml
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/blogs?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
@@ -31,20 +33,6 @@ spring:
           max-idle: 8
           min-idle: 0
           max-wait: -1ms
-  mail:
-    host: smtp.163.com
-    port: 25
-    username: m17870433516
-    password: VAhTi38ahC7ZQJy4
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: false
-          timeout: 5000
-          connectiontimeout: 5000
-          writetimeout: 5000
   security:
     user:
       name: admin
@@ -55,14 +43,6 @@ token:
   expire-time: 360
   header: Authorization
   prefix: "Bearer "
-
-blog:
-  mail:
-    host: smtp.163.com
-    port: 25
-    from: m17870433516@163.com
-    user: m17870433516
-    pass: VAhTi38ahC7ZQJy4
 
 logging:
   level:

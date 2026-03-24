@@ -5,13 +5,12 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * 响应结果
+ * 统一响应结果。
  *
  * @author xy
  */
 @Data
 public class Result<T> implements Serializable {
-
 
     @Serial
     private static final long serialVersionUID = 1L;

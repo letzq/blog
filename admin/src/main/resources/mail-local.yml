@@ -1,0 +1,23 @@
+spring:
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: m17870433516
+    password: VAhTi38ahC7ZQJy4
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: false
+          timeout: 5000
+          connectiontimeout: 5000
+          writetimeout: 5000
+
+blog:
+  mail:
+    host: smtp.163.com
+    port: 25
+    from: m17870433516@163.com
+    user: m17870433516
+    pass: VAhTi38ahC7ZQJy4
