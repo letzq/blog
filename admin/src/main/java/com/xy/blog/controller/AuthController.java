@@ -13,6 +13,7 @@ import com.xy.blog.system.service.IBlogAuthService;
 import com.xy.blog.system.vo.BlogLoginVo;
 import com.xy.blog.system.vo.BlogUserVo;
 import com.xy.blog.system.vo.CaptchaVo;
+import com.xy.blog.system.vo.CurrentUserInfoVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -83,5 +84,19 @@ public class AuthController {
     public Result<String> resetPassword(@RequestBody @Valid PasswordResetDto dto) {
         blogAuthService.resetPassword(dto);
         return Result.success("密码重置成功");
+    }
+
+    @Operation(summary = "获取当前登录用户信息")
+    @GetMapping("/me")
+    public Result<CurrentUserInfoVo> currentUserInfo() {
+        return Result.success(blogAuthService.getCurrentUserInfo());
+    }
+
+    @Log(title = "认证管理", businessType = BusinessType.LOGOUT, saveRequestData = false, saveResponseData = true)
+    @Operation(summary = "退出登录")
+    @PostMapping("/logout")
+    public Result<String> logout() {
+        blogAuthService.logout();
+        return Result.success("退出登录成功");
     }
 }

@@ -9,15 +9,11 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 /**
  * 博客用户角色关联实体。
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @TableName("blog_user_role")
 @Schema(name = "BlogUserRole", description = "博客用户角色关联表")
 public class BlogUserRole implements Serializable {

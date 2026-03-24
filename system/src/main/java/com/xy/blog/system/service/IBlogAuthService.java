@@ -9,6 +9,7 @@ import com.xy.blog.system.dto.RegisterDto;
 import com.xy.blog.system.vo.BlogLoginVo;
 import com.xy.blog.system.vo.BlogUserVo;
 import com.xy.blog.system.vo.CaptchaVo;
+import com.xy.blog.system.vo.CurrentUserInfoVo;
 
 /**
  * 博客认证服务接口。
@@ -49,4 +50,14 @@ public interface IBlogAuthService {
      * 重置密码。
      */
     void resetPassword(PasswordResetDto dto);
+
+    /**
+     * 获取当前登录用户信息。
+     */
+    CurrentUserInfoVo getCurrentUserInfo();
+
+    /**
+     * 退出登录。
+     */
+    void logout();
 }

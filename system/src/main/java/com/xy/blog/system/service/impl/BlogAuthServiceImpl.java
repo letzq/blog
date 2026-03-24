@@ -20,9 +20,11 @@ import com.xy.blog.system.entity.po.BlogUser;
 import com.xy.blog.system.service.IBlogAuthService;
 import com.xy.blog.system.service.IBlogLoginLogService;
 import com.xy.blog.system.service.IBlogUserService;
+import com.xy.blog.system.service.IBlogUserRoleService;
 import com.xy.blog.system.vo.BlogLoginVo;
 import com.xy.blog.system.vo.BlogUserVo;
 import com.xy.blog.system.vo.CaptchaVo;
+import com.xy.blog.system.vo.CurrentUserInfoVo;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -38,7 +40,10 @@ import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * 博客认证服务实现。
@@ -54,6 +59,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     private static final char[] CAPTCHA_CHARS = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
 
     private final IBlogUserService blogUserService;
+    private final IBlogUserRoleService blogUserRoleService;
     private final IBlogLoginLogService blogLoginLogService;
     private final RedisCache redisCache;
     private final MailService mailService;
@@ -200,6 +206,44 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
         );
         blogUserService.updatePasswordByUserId(user.getUserId(), passwordEncoder.encode(dto.getNewPassword()));
         tokenService.removeTokenByUserId(user.getUserId());
+    }
+
+    @Override
+    public CurrentUserInfoVo getCurrentUserInfo() {
+        Long userId = UserContext.getUserId();
+        if (userId == null) {
+            throw new BusinessException("当前未登录或登录状态已失效");
+        }
+        BlogUser user = blogUserService.getById(userId);
+        if (user == null) {
+            throw new BusinessException("当前登录用户不存在");
+        }
+        List<String> roleKeys = blogUserRoleService.listRoleKeysByUserId(userId);
+        if (roleKeys == null) {
+            roleKeys = Collections.emptyList();
+        }
+        return CurrentUserInfoVo.builder()
+            .userId(user.getUserId())
+            .userName(user.getUserName())
+            .nickName(user.getNickName())
+            .email(user.getEmail())
+            .phonenumber(user.getPhonenumber())
+            .avatar(user.getAvatar())
+            .status(user.getStatus())
+            .roles(roleKeys)
+            .permissions(Collections.emptyList())
+            .build();
+    }
+
+    @Override
+    public void logout() {
+        Long userId = UserContext.getUserId();
+        if (userId == null) {
+            throw new BusinessException("当前未登录或登录状态已失效");
+        }
+        tokenService.removeTokenByUserId(userId);
+        SecurityContextHolder.clearContext();
+        UserContext.clear();
     }
 
     /**

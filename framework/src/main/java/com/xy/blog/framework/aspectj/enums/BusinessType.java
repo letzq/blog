@@ -10,5 +10,6 @@ public enum BusinessType {
     EXPORT,
     IMPORT,
     LOGIN,
+    LOGOUT,
     OTHER
 }
