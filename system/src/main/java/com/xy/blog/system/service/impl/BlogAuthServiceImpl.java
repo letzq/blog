@@ -12,6 +12,8 @@ import com.xy.blog.system.dto.BlogLoginDto;
 import com.xy.blog.system.dto.BlogUserCreateDto;
 import com.xy.blog.system.dto.EmailCodeSendDto;
 import com.xy.blog.system.dto.EmailLoginDto;
+import com.xy.blog.system.dto.PasswordCodeSendDto;
+import com.xy.blog.system.dto.PasswordResetDto;
 import com.xy.blog.system.dto.RegisterDto;
 import com.xy.blog.system.entity.po.BlogLoginLog;
 import com.xy.blog.system.entity.po.BlogUser;
@@ -102,7 +104,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
         String sendLimitKey = buildSendLimitKey(scene, email);
         if (redisCache.hasKey(sendLimitKey)) {
-            throw new BusinessException("验证码发送过于频繁，请60秒后再试");
+            throw new BusinessException("验证码发送过于频繁，请 60 秒后再试");
         }
 
         String code = generateNumericCode();
@@ -120,7 +122,13 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
                 throw new BusinessException("该邮箱未注册");
             }
             validateUserAvailable(user);
-            validateEmailCode("LOGIN", email, dto.getCode(), true);
+            validateEmailCode(
+                CacheConstants.EMAIL_LOGIN_CODE_KEY_PREFIX + email,
+                dto.getCode(),
+                true,
+                "邮箱验证码不存在或已过期",
+                "邮箱验证码错误"
+            );
             BlogLoginVo loginVo = buildLoginVo(user);
             UserContext.set(user.getUserId(), user.getUserName());
             recordLoginLog(user, email, "EMAIL_CODE", "1", "登录成功");
@@ -134,7 +142,13 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     @Override
     public BlogUserVo register(RegisterDto dto) {
         String email = dto.getEmail().trim();
-        validateEmailCode("REGISTER", email, dto.getCode(), true);
+        validateEmailCode(
+            CacheConstants.EMAIL_REGISTER_CODE_KEY_PREFIX + email,
+            dto.getCode(),
+            true,
+            "邮箱验证码不存在或已过期",
+            "邮箱验证码错误"
+        );
 
         BlogUserCreateDto createDto = new BlogUserCreateDto();
         createDto.setUserName(dto.getUserName());
@@ -145,6 +159,47 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
         BlogUserVo userVo = blogUserService.createUser(createDto);
         UserContext.set(userVo.getUserId(), userVo.getUserName());
         return userVo;
+    }
+
+    @Override
+    public void sendResetPasswordCode(PasswordCodeSendDto dto) {
+        String email = dto.getEmail().trim();
+        BlogUser user = blogUserService.getByEmail(email);
+        if (user == null) {
+            throw new BusinessException("该邮箱未注册");
+        }
+        validateUserAvailable(user);
+
+        String sendLimitKey = CacheConstants.PASSWORD_RESET_SEND_LIMIT_KEY_PREFIX + email;
+        if (redisCache.hasKey(sendLimitKey)) {
+            throw new BusinessException("验证码发送过于频繁，请 60 秒后再试");
+        }
+
+        String code = generateNumericCode();
+        redisCache.setCacheObject(CacheConstants.PASSWORD_RESET_CODE_KEY_PREFIX + email, code, EMAIL_CODE_EXPIRE_MINUTES, TimeUnit.MINUTES);
+        redisCache.setCacheObject(sendLimitKey, "1", EMAIL_SEND_LIMIT_SECONDS, TimeUnit.SECONDS);
+        mailService.sendTextMail(email, "博客系统找回密码验证码", "您本次找回密码的验证码为：" + code + "，5 分钟内有效，请勿泄露给他人。");
+    }
+
+    @Override
+    public void resetPassword(PasswordResetDto dto) {
+        String email = dto.getEmail().trim();
+        BlogUser user = blogUserService.getByEmail(email);
+        if (user == null) {
+            throw new BusinessException("该邮箱未注册");
+        }
+        if (!dto.getNewPassword().equals(dto.getConfirmPassword())) {
+            throw new BusinessException("两次输入的新密码不一致");
+        }
+        validateEmailCode(
+            CacheConstants.PASSWORD_RESET_CODE_KEY_PREFIX + email,
+            dto.getCode(),
+            true,
+            "找回密码验证码不存在或已过期",
+            "找回密码验证码错误"
+        );
+        blogUserService.updatePasswordByUserId(user.getUserId(), passwordEncoder.encode(dto.getNewPassword()));
+        tokenService.removeTokenByUserId(user.getUserId());
     }
 
     /**
@@ -186,14 +241,13 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     /**
      * 校验邮箱验证码，并按需要在校验通过后删除缓存。
      */
-    private void validateEmailCode(String scene, String email, String code, boolean removeAfterValidate) {
-        String cacheKey = buildCodeKey(scene, email);
+    private void validateEmailCode(String cacheKey, String code, boolean removeAfterValidate, String missingMessage, String invalidMessage) {
         String cacheCode = redisCache.getCacheObject(cacheKey);
         if (cacheCode == null) {
-            throw new BusinessException("邮箱验证码不存在或已过期");
+            throw new BusinessException(missingMessage);
         }
         if (!cacheCode.equalsIgnoreCase(code.trim())) {
-            throw new BusinessException("邮箱验证码错误");
+            throw new BusinessException(invalidMessage);
         }
         if (removeAfterValidate) {
             redisCache.deleteObject(cacheKey);
@@ -275,7 +329,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
     private String buildContent(String scene, String code) {
         String action = "LOGIN".equals(scene) ? "登录" : "注册";
-        return "您本次" + action + "的验证码为：" + code + "，5分钟内有效，请勿泄露给他人。";
+        return "您本次" + action + "的验证码为：" + code + "，5 分钟内有效，请勿泄露给他人。";
     }
 
     private BlogLoginVo buildLoginVo(BlogUser user) {
@@ -290,7 +344,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     }
 
     /**
-     * 生成基础验证码图片，当前实现够开发联调用，后面可再增强噪点和字体随机化。
+     * 生成基础验证码图片，当前实现满足开发联调，后续可继续增强噪点和字体随机化。
      */
     private String buildCaptchaImage(String captchaCode) {
         BufferedImage image = new BufferedImage(120, 40, BufferedImage.TYPE_INT_RGB);

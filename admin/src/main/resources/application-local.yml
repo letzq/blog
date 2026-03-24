@@ -39,7 +39,7 @@ spring:
       password: love2002
 
 token:
-  secret: blog-ymw@1216
+  secret: blog-ymw@121617870433516jwt-secret
   expire-time: 360
   header: Authorization
   prefix: "Bearer "

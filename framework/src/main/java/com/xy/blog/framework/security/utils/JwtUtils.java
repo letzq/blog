@@ -53,7 +53,7 @@ public class JwtUtils {
     }
 
     /**
-     * 获取用户ID。
+     * 获取用户 ID。
      */
     public Long getUserId(String token) {
         Object value = parseToken(token).get("userId");

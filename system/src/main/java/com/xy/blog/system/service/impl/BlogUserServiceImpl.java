@@ -60,4 +60,12 @@ public class BlogUserServiceImpl extends ServiceImpl<BlogUserMapper, BlogUser> i
         vo.setStatus(user.getStatus());
         return vo;
     }
+
+    @Override
+    public void updatePasswordByUserId(Long userId, String encodedPassword) {
+        BlogUser user = new BlogUser();
+        user.setUserId(userId);
+        user.setPassword(encodedPassword);
+        this.updateById(user);
+    }
 }

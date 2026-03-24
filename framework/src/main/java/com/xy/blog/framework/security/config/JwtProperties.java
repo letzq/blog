@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class JwtProperties {
 
     /**
-     * JWT 密钥。
+     * JWT 签名密钥。
      */
     private String secret = "blog-default-jwt-secret-key-blog-default-jwt-secret-key";
 
@@ -23,7 +23,7 @@ public class JwtProperties {
     private long expireTime = 120L;
 
     /**
-     * 令牌请求头名称。
+     * 请求头名称。
      */
     private String header = "Authorization";
 

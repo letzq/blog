@@ -2,7 +2,7 @@ package com.xy.blog.framework.security.context;
 
 /**
  * 当前用户上下文。
- * 使用 ThreadLocal 保存当前请求线程中的用户信息。
+ * 使用 ThreadLocal 保存当前请求线程中的登录用户信息。
  */
 public final class UserContext {
 
@@ -14,7 +14,7 @@ public final class UserContext {
     /**
      * 设置当前登录用户信息。
      *
-     * @param userId 用户ID
+     * @param userId 用户 ID
      * @param userName 用户名
      */
     public static void set(Long userId, String userName) {
@@ -31,9 +31,9 @@ public final class UserContext {
     }
 
     /**
-     * 获取当前用户ID。
+     * 获取当前用户 ID。
      *
-     * @return 用户ID，不存在时返回 null
+     * @return 用户 ID，不存在时返回 null
      */
     public static Long getUserId() {
         LoginUserInfo loginUserInfo = get();
@@ -60,7 +60,7 @@ public final class UserContext {
     /**
      * 当前登录用户信息。
      *
-     * @param userId 用户ID
+     * @param userId 用户 ID
      * @param userName 用户名
      */
     public record LoginUserInfo(Long userId, String userName) {

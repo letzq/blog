@@ -6,8 +6,6 @@ import lombok.Data;
 
 /**
  * 统一响应结果。
- *
- * @author xy
  */
 @Data
 public class Result<T> implements Serializable {
@@ -19,9 +17,7 @@ public class Result<T> implements Serializable {
     private static final int ERROR = 500;
 
     private int code;
-
     private String msg;
-
     private T data;
 
     public static <T> Result<T> success() {

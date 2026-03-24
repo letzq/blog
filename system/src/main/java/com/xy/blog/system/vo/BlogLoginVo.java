@@ -12,7 +12,7 @@ import lombok.Data;
 @Schema(name = "BlogLoginVo", description = "登录返回对象")
 public class BlogLoginVo {
 
-    @Schema(description = "JWT令牌")
+    @Schema(description = "JWT 令牌")
     private String token;
 
     @Schema(description = "请求头名称")

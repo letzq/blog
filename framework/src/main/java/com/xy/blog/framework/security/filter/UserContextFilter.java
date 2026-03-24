@@ -14,7 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 /**
  * 用户上下文过滤器。
- * 在请求开始时尝试从 SecurityContext 中同步用户名，并在请求结束时清理 ThreadLocal。
+ * 在请求结束时清理 ThreadLocal，避免线程复用导致的上下文串用。
  */
 @Component
 public class UserContextFilter extends OncePerRequestFilter {
@@ -24,7 +24,7 @@ public class UserContextFilter extends OncePerRequestFilter {
         throws ServletException, IOException {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication != null && authentication.isAuthenticated()
+            if (UserContext.get() == null && authentication != null && authentication.isAuthenticated()
                 && !(authentication instanceof AnonymousAuthenticationToken)) {
                 UserContext.set(null, authentication.getName());
             }

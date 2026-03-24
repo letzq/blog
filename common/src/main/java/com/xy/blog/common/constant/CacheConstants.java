@@ -11,6 +11,8 @@ public final class CacheConstants {
     public static final String EMAIL_REGISTER_CODE_KEY_PREFIX = "blog:email:code:register:";
     public static final String EMAIL_LOGIN_SEND_LIMIT_KEY_PREFIX = "blog:email:send:login:";
     public static final String EMAIL_REGISTER_SEND_LIMIT_KEY_PREFIX = "blog:email:send:register:";
+    public static final String PASSWORD_RESET_CODE_KEY_PREFIX = "blog:password:code:";
+    public static final String PASSWORD_RESET_SEND_LIMIT_KEY_PREFIX = "blog:password:send:";
 
     private CacheConstants() {
     }
