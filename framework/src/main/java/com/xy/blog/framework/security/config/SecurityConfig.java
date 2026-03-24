@@ -1,5 +1,7 @@
 package com.xy.blog.framework.security.config;
 
+import com.xy.blog.framework.security.filter.UserContextFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -8,12 +10,16 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Spring Security 基础配置。
  */
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final UserContextFilter userContextFilter;
 
     /**
      * 配置安全过滤器链。
@@ -26,6 +32,7 @@ public class SecurityConfig {
                 .requestMatchers("/auth/**", "/test/**", "/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated()
             )
+            .addFilterBefore(userContextFilter, UsernamePasswordAuthenticationFilter.class)
             .formLogin(Customizer.withDefaults());
         return http.build();
     }

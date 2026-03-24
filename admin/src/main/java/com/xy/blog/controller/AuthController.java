@@ -1,5 +1,7 @@
 package com.xy.blog.controller;
 
+import com.xy.blog.framework.aspectj.annotation.Log;
+import com.xy.blog.framework.aspectj.enums.BusinessType;
 import com.xy.blog.framework.web.domain.Result;
 import com.xy.blog.system.dto.BlogLoginDto;
 import com.xy.blog.system.dto.EmailCodeSendDto;
@@ -42,6 +44,7 @@ public class AuthController {
     /**
      * 账号密码登录接口。
      */
+    @Log(title = "认证管理", businessType = BusinessType.LOGIN, saveRequestData = true, saveResponseData = true)
     @Operation(summary = "账号密码登录")
     @PostMapping("/login")
     public Result<BlogLoginVo> login(@RequestBody @Valid BlogLoginDto dto) {
@@ -51,6 +54,7 @@ public class AuthController {
     /**
      * 发送邮箱验证码。
      */
+    @Log(title = "认证管理", businessType = BusinessType.OTHER, saveRequestData = true, saveResponseData = true)
     @Operation(summary = "发送邮箱验证码")
     @PostMapping("/email/code")
     public Result<String> sendEmailCode(@RequestBody @Valid EmailCodeSendDto dto) {
@@ -61,6 +65,7 @@ public class AuthController {
     /**
      * 邮箱验证码登录接口。
      */
+    @Log(title = "认证管理", businessType = BusinessType.LOGIN, saveRequestData = true, saveResponseData = true)
     @Operation(summary = "邮箱验证码登录")
     @PostMapping("/login/email")
     public Result<BlogLoginVo> loginByEmail(@RequestBody @Valid EmailLoginDto dto) {
@@ -70,6 +75,7 @@ public class AuthController {
     /**
      * 用户注册接口。
      */
+    @Log(title = "认证管理", businessType = BusinessType.INSERT, saveRequestData = true, saveResponseData = true)
     @Operation(summary = "用户注册")
     @PostMapping("/register")
     public Result<BlogUserVo> register(@RequestBody @Valid RegisterDto dto) {

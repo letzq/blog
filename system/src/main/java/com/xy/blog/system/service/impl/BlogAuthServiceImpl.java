@@ -5,14 +5,18 @@ import com.xy.blog.framework.exception.BusinessException;
 import com.xy.blog.framework.mail.service.MailService;
 import com.xy.blog.framework.redis.RedisCache;
 import com.xy.blog.framework.security.config.JwtProperties;
+import com.xy.blog.framework.security.context.UserContext;
 import com.xy.blog.framework.security.service.TokenService;
+import com.xy.blog.framework.web.utils.ServletUtils;
 import com.xy.blog.system.dto.BlogLoginDto;
 import com.xy.blog.system.dto.BlogUserCreateDto;
 import com.xy.blog.system.dto.EmailCodeSendDto;
 import com.xy.blog.system.dto.EmailLoginDto;
 import com.xy.blog.system.dto.RegisterDto;
+import com.xy.blog.system.entity.po.BlogLoginLog;
 import com.xy.blog.system.entity.po.BlogUser;
 import com.xy.blog.system.service.IBlogAuthService;
+import com.xy.blog.system.service.IBlogLoginLogService;
 import com.xy.blog.system.service.IBlogUserService;
 import com.xy.blog.system.vo.BlogLoginVo;
 import com.xy.blog.system.vo.BlogUserVo;
@@ -23,6 +27,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.Locale;
 import java.util.UUID;
@@ -44,18 +49,16 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     private static final long EMAIL_CODE_EXPIRE_MINUTES = 5L;
     private static final long EMAIL_SEND_LIMIT_SECONDS = 60L;
     private static final int LOGIN_CAPTCHA_LENGTH = 4;
-    private static final char[] CAPTCHA_CHARS = "23456789qwertyuiopasdfghjklzxcvbnmABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
+    private static final char[] CAPTCHA_CHARS = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
 
     private final IBlogUserService blogUserService;
+    private final IBlogLoginLogService blogLoginLogService;
     private final RedisCache redisCache;
     private final MailService mailService;
     private final TokenService tokenService;
     private final JwtProperties jwtProperties;
     private final PasswordEncoder passwordEncoder;
 
-    /**
-     * 生成登录验证码。
-     */
     @Override
     public CaptchaVo generateLoginCaptcha() {
         String captchaCode = generateCaptchaCode(LOGIN_CAPTCHA_LENGTH);
@@ -70,16 +73,25 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
     @Override
     public BlogLoginVo loginByPassword(BlogLoginDto dto) {
-        validateLoginCaptcha(dto.getCaptchaKey(), dto.getCaptchaCode());
-        BlogUser user = blogUserService.getByUserName(dto.getUserName().trim());
-        if (user == null) {
-            throw new BusinessException("用户名或密码错误");
+        String userName = dto.getUserName().trim();
+        try {
+            validateLoginCaptcha(dto.getCaptchaKey(), dto.getCaptchaCode());
+            BlogUser user = blogUserService.getByUserName(userName);
+            if (user == null) {
+                throw new BusinessException("用户名或密码错误");
+            }
+            validateUserAvailable(user);
+            if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+                throw new BusinessException("用户名或密码错误");
+            }
+            BlogLoginVo loginVo = buildLoginVo(user);
+            UserContext.set(user.getUserId(), user.getUserName());
+            recordLoginLog(user, user.getEmail(), "PASSWORD", "1", "登录成功");
+            return loginVo;
+        } catch (BusinessException exception) {
+            recordLoginLog(null, null, userName, "PASSWORD", "0", exception.getMessage());
+            throw exception;
         }
-        validateUserAvailable(user);
-        if (!passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            throw new BusinessException("用户名或密码错误");
-        }
-        return buildLoginVo(user);
     }
 
     @Override
@@ -102,17 +114,22 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     @Override
     public BlogLoginVo loginByEmail(EmailLoginDto dto) {
         String email = dto.getEmail().trim();
-        BlogUser user = blogUserService.getByEmail(email);
-        if (user == null) {
-            throw new BusinessException("该邮箱未注册");
+        try {
+            BlogUser user = blogUserService.getByEmail(email);
+            if (user == null) {
+                throw new BusinessException("该邮箱未注册");
+            }
+            validateUserAvailable(user);
+            validateEmailCode("LOGIN", email, dto.getCode(), true);
+            BlogLoginVo loginVo = buildLoginVo(user);
+            UserContext.set(user.getUserId(), user.getUserName());
+            recordLoginLog(user, email, "EMAIL_CODE", "1", "登录成功");
+            return loginVo;
+        } catch (BusinessException exception) {
+            recordLoginLog(null, email, null, "EMAIL_CODE", "0", exception.getMessage());
+            throw exception;
         }
-        validateUserAvailable(user);
-        validateEmailCode("LOGIN", email, dto.getCode(), true);
-        return buildLoginVo(user);
     }
-    /**
-     * 注册前先校验一次邮箱验证码，校验成功后立即删除缓存避免重复使用。
-     */
 
     @Override
     public BlogUserVo register(RegisterDto dto) {
@@ -125,7 +142,9 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
         createDto.setEmail(email);
         createDto.setPhonenumber(dto.getPhonenumber());
         createDto.setPassword(dto.getPassword());
-        return blogUserService.createUser(createDto);
+        BlogUserVo userVo = blogUserService.createUser(createDto);
+        UserContext.set(userVo.getUserId(), userVo.getUserName());
+        return userVo;
     }
 
     /**
@@ -188,6 +207,33 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
         if (!"1".equals(user.getStatus()) || "1".equals(user.getDelFlag())) {
             throw new BusinessException("当前用户已被禁用");
         }
+    }
+
+    /**
+     * 记录登录日志。
+     */
+    private void recordLoginLog(BlogUser user, String email, String loginType, String status, String message) {
+        recordLoginLog(user, email, null, loginType, status, message);
+    }
+
+    /**
+     * 记录登录日志。
+     */
+    private void recordLoginLog(BlogUser user, String email, String userName, String loginType, String status, String message) {
+        BlogLoginLog loginLog = new BlogLoginLog();
+        loginLog.setUserId(user == null ? null : user.getUserId());
+        loginLog.setUserName(user == null ? userName : user.getUserName());
+        loginLog.setLoginType(loginType);
+        loginLog.setEmail(email == null && user != null ? user.getEmail() : email);
+        loginLog.setLoginIp(ServletUtils.getClientIp());
+        loginLog.setLoginLocation("");
+        loginLog.setBrowser(ServletUtils.getBrowser());
+        loginLog.setOs(ServletUtils.getOs());
+        loginLog.setDeviceInfo(ServletUtils.getDeviceInfo());
+        loginLog.setStatus(status);
+        loginLog.setMessage(message);
+        loginLog.setLoginTime(LocalDateTime.now());
+        blogLoginLogService.saveLoginLog(loginLog);
     }
 
     private String buildCodeKey(String scene, String email) {
