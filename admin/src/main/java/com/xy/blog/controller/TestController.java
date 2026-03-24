@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,12 +39,25 @@ public class TestController {
     }
 
     /**
-     * 用户查询示例接口。
+     * 用户查询示例接口，仅 admin 可以访问。
      */
     @GetMapping("/user/demo")
+    @PreAuthorize("hasRole('admin')")
     public Result<BlogUser> demoUser() {
         BlogUser user = blogUserService.getByUserName("admin");
         return Result.success(user);
+    }
+
+    /**
+     * 角色权限示例接口，admin 或 editor 可以访问。
+     */
+    @GetMapping("/role/demo")
+    @PreAuthorize("hasAnyRole('admin','editor')")
+    public Result<Map<String, Object>> roleDemo() {
+        Map<String, Object> data = new HashMap<>();
+        data.put("scope", "admin/editor");
+        data.put("status", "granted");
+        return Result.success(data);
     }
 
     /**

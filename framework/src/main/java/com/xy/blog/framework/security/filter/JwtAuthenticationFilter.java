@@ -2,13 +2,13 @@ package com.xy.blog.framework.security.filter;
 
 import com.xy.blog.framework.security.context.UserContext;
 import com.xy.blog.framework.security.service.TokenService;
+import com.xy.blog.framework.security.service.UserAuthorityService;
 import com.xy.blog.framework.security.utils.JwtUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,6 +27,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final TokenService tokenService;
     private final JwtUtils jwtUtils;
+    private final UserAuthorityService userAuthorityService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -41,7 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     String userName = jwtUtils.getUserName(token);
                     if (tokenService.isTokenActive(userId, token)) {
                         UsernamePasswordAuthenticationToken authentication =
-                            new UsernamePasswordAuthenticationToken(userName, null, Collections.emptyList());
+                            new UsernamePasswordAuthenticationToken(userName, null, userAuthorityService.loadAuthorities(userId));
                         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                         SecurityContextHolder.getContext().setAuthentication(authentication);
                         UserContext.set(userId, userName);

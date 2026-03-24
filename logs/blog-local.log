@@ -1526,3 +1526,297 @@ Caused by: java.lang.ClassNotFoundException: com.xy.blog.system.entity.po.BlogOp
 2026-03-24 22:28:15.645 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
 2026-03-24 22:28:15.724 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2026-03-24 22:28:15.750 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2026-03-24 22:43:51.283 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-24 22:43:51.334 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 22:43:51.334 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 22:43:51.335 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 22:43:51.399 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-24 22:43:51.399 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-24 22:43:52.637 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 22:43:52.641 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 22:43:52.702 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 39 ms. Found 0 Redis repository interfaces.
+2026-03-24 22:43:53.826 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 22:43:53.847 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:43:53.850 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 22:43:53.850 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 22:43:53.913 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 22:43:53.913 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2513 ms
+2026-03-24 22:43:54.526 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-24 22:43:54.527 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-24 22:43:54.645 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-24 22:43:55.468 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-03-24 22:43:56.510 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-24 22:43:57.078 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1537ea1d
+2026-03-24 22:43:57.559 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-24 22:43:57.600 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:43:57.627 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-24 22:43:57.642 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 7.084 seconds (process running for 8.081)
+2026-03-24 22:44:00.923 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-24 22:44:00.923 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-24 22:44:00.926 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-03-24 22:44:01.837 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.xy.blog.framework.exception.BusinessException: 当前未登录或登录状态已失效]
+2026-03-24 22:44:37.310 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE (email = ?)
+2026-03-24 22:44:37.345 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==> Parameters: 489572770@qq.com(String)
+2026-03-24 22:44:37.392 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectList - <==      Total: 1
+2026-03-24 22:44:37.436 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==>  Preparing: INSERT INTO blog_oper_log ( title, business_type, method, request_method, oper_name, oper_url, oper_ip, oper_location, oper_param, json_result, status, error_msg, cost_time, oper_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2026-03-24 22:44:37.439 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==> Parameters: 认证管理(String), OTHER(String), com.xy.blog.controller.AuthController.sendEmailCode()(String), POST(String), anonymousUser(String), /auth/email/code(String), 0:0:0:0:0:0:0:1(String), (String), [{"email":"489572770@qq.com","scene":"LOGIN"}](String), {"code":200,"msg":"操作成功","data":"验证码发送成功"}(String), 1(String), (String), 258(Long), 2026-03-24T22:44:37.421650(LocalDateTime)
+2026-03-24 22:44:37.456 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - <==    Updates: 1
+2026-03-24 22:45:09.178 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE (email = ?)
+2026-03-24 22:45:09.178 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==> Parameters: 489572770@qq.com(String)
+2026-03-24 22:45:09.181 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - <==      Total: 1
+2026-03-24 22:45:09.216 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogLoginLogMapper.insert - ==>  Preparing: INSERT INTO blog_login_log ( user_id, user_name, login_type, email, login_ip, login_location, browser, os, device_info, status, message, login_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2026-03-24 22:45:09.216 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogLoginLogMapper.insert - ==> Parameters: 1(Long), root(String), EMAIL_CODE(String), 489572770@qq.com(String), 0:0:0:0:0:0:0:1(String), (String), Unknown(String), Unknown(String), Desktop(String), 1(String), 登录成功(String), 2026-03-24T22:45:09.213583200(LocalDateTime)
+2026-03-24 22:45:09.227 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogLoginLogMapper.insert - <==    Updates: 1
+2026-03-24 22:45:09.232 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==>  Preparing: INSERT INTO blog_oper_log ( title, business_type, method, request_method, oper_name, oper_url, oper_ip, oper_location, oper_param, json_result, status, error_msg, cost_time, oper_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2026-03-24 22:45:09.232 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==> Parameters: 认证管理(String), LOGIN(String), com.xy.blog.controller.AuthController.loginByEmail()(String), POST(String), root(String), /auth/login/email(String), 0:0:0:0:0:0:0:1(String), (String), [{"email":"489572770@qq.com","code":"******"}](String), {"code":200,"msg":"操作成功","data":{"token":"******","header":"Authorization","prefix":"Bearer ","expireTime":360,"userName":"root"}}(String), 1(String), (String), 52(Long), 2026-03-24T22:45:09.228960(LocalDateTime)
+2026-03-24 22:45:09.236 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - <==    Updates: 1
+2026-03-24 22:45:28.288 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE user_id=?
+2026-03-24 22:45:28.288 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==> Parameters: 1(Long)
+2026-03-24 22:45:28.295 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.BlogUserMapper.selectById - <==      Total: 1
+2026-03-24 22:45:28.297 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-24 22:45:28.299 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-24 22:45:28.313 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 0
+2026-03-24 22:55:04.841 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 26 class path changes (1 addition, 0 deletions, 25 modifications)
+2026-03-24 22:55:04.901 [Thread-5] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-24 22:55:04.909 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:55:04.928 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-24 22:55:04.930 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:55:05.008 [Thread-5] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-03-24 22:55:05.039 [Thread-5] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2026-03-24 22:55:05.452 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 22:55:05.453 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 22:55:05.453 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 22:55:06.221 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 22:55:06.221 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 22:55:06.290 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 0 Redis repository interfaces.
+2026-03-24 22:55:06.824 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 22:55:06.829 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:55:06.829 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 22:55:06.830 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 22:55:06.871 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 22:55:06.871 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1413 ms
+2026-03-24 22:55:06.997 [restartedMain] ERROR o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [D:\BLOG\Blog\framework\target\classes\com\xy\blog\framework\security\filter\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'com.xy.blog.framework.security.service.UserAuthorityService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-03-24 22:55:06.999 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-24 22:55:07.002 [restartedMain] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [lettuce-timer-6-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/java.lang.Thread.sleep0(Native Method)
+ java.base/java.lang.Thread.sleep(Thread.java:509)
+ io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:598)
+ io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:494)
+ io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-24 22:55:07.003 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-03-24 22:55:07.014 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24 22:55:07.071 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.xy.blog.framework.security.filter.JwtAuthenticationFilter required a bean of type 'com.xy.blog.framework.security.service.UserAuthorityService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.xy.blog.framework.security.service.UserAuthorityService' in your configuration.
+
+2026-03-24 22:55:08.622 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 22:55:08.622 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 22:55:08.623 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 22:55:09.211 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 22:55:09.211 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 22:55:09.266 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 52 ms. Found 0 Redis repository interfaces.
+2026-03-24 22:55:09.574 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 22:55:09.576 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:55:09.576 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 22:55:09.578 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 22:55:09.616 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 22:55:09.616 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 991 ms
+2026-03-24 22:55:09.706 [restartedMain] ERROR o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [D:\BLOG\Blog\framework\target\classes\com\xy\blog\framework\security\filter\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'com.xy.blog.framework.security.service.UserAuthorityService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-03-24 22:55:09.707 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-24 22:55:09.710 [restartedMain] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [lettuce-timer-8-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/java.lang.Thread.sleep0(Native Method)
+ java.base/java.lang.Thread.sleep(Thread.java:509)
+ io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:598)
+ io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:494)
+ io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-24 22:55:09.711 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-03-24 22:55:09.723 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24 22:55:09.731 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.xy.blog.framework.security.filter.JwtAuthenticationFilter required a bean of type 'com.xy.blog.framework.security.service.UserAuthorityService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.xy.blog.framework.security.service.UserAuthorityService' in your configuration.
+
+2026-03-24 22:55:11.270 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 22:55:11.270 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 22:55:11.270 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 22:55:11.809 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 22:55:11.809 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 22:55:11.866 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 0 Redis repository interfaces.
+2026-03-24 22:55:12.132 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 22:55:12.134 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:55:12.134 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 22:55:12.134 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 22:55:12.174 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 22:55:12.174 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 900 ms
+2026-03-24 22:55:12.325 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-24 22:55:12.484 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-2} inited
+2026-03-24 22:55:12.948 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-24 22:55:12.948 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-24 22:55:13.743 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-24 22:55:14.162 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1266b1cb
+2026-03-24 22:55:14.685 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-24 22:55:14.737 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-24 22:55:14.744 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-24 22:55:14.750 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 3.522 seconds (process running for 685.189)
+2026-03-24 22:55:14.754 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-24 23:06:01.952 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2026-03-24 23:06:01.991 [Thread-7] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-24 23:06:01.997 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-24 23:06:02.019 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-24 23:06:02.021 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-24 23:06:02.040 [Thread-7] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-2} closing ...
+2026-03-24 23:06:02.059 [Thread-7] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-2} closed
+2026-03-24 23:06:02.342 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 23:06:02.342 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 23:06:02.342 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 23:06:03.137 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 23:06:03.137 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 23:06:03.205 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 0 Redis repository interfaces.
+2026-03-24 23:06:03.659 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 23:06:03.663 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 23:06:03.665 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 23:06:03.665 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 23:06:03.711 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 23:06:03.712 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1362 ms
+2026-03-24 23:06:03.802 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-24 23:06:03.878 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-24 23:06:04.062 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-3} inited
+2026-03-24 23:06:04.543 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\BLOG\Blog\admin\target\classes\com\xy\blog\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogAuthServiceImpl' defined in file [D:\BLOG\Blog\system\target\classes\com\xy\blog\system\service\impl\BlogAuthServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogUserServiceImpl' defined in file [D:\BLOG\Blog\system\target\classes\com\xy\blog\system\service\impl\BlogUserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-03-24 23:06:04.544 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-3} closing ...
+2026-03-24 23:06:04.548 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-3} closed
+2026-03-24 23:06:04.549 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-24 23:06:04.559 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24 23:06:04.571 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.xy.blog.system.service.impl.BlogUserServiceImpl required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+2026-03-24 23:06:06.574 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 23:06:06.574 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 23:06:06.574 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 23:06:07.191 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 23:06:07.191 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 23:06:07.252 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 0 Redis repository interfaces.
+2026-03-24 23:06:07.605 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 23:06:07.606 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 23:06:07.606 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 23:06:07.607 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 23:06:07.653 [restartedMain] INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 23:06:07.653 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1075 ms
+2026-03-24 23:06:07.794 [restartedMain] ERROR o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [D:\BLOG\Blog\framework\target\classes\com\xy\blog\framework\security\filter\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'userAuthorityServiceImpl' defined in file [D:\BLOG\Blog\admin\target\classes\com\xy\blog\security\service\UserAuthorityServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.xy.blog.system.service.IBlogUserRoleService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2026-03-24 23:06:07.796 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-24 23:06:07.799 [restartedMain] WARN  o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [lettuce-timer-12-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/java.lang.Thread.sleep0(Native Method)
+ java.base/java.lang.Thread.sleep(Thread.java:509)
+ io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:598)
+ io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:494)
+ io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-24 23:06:07.800 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2026-03-24 23:06:07.811 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-24 23:06:07.820 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.xy.blog.security.service.UserAuthorityServiceImpl required a bean of type 'com.xy.blog.system.service.IBlogUserRoleService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.xy.blog.system.service.IBlogUserRoleService' in your configuration.
+
+2026-03-24 23:06:09.366 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 20556 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-24 23:06:09.367 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-24 23:06:09.367 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-24 23:06:09.992 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-24 23:06:09.992 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-24 23:06:10.052 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 0 Redis repository interfaces.
+2026-03-24 23:06:10.378 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-24 23:06:10.379 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-24 23:06:10.379 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-24 23:06:10.379 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-24 23:06:10.418 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-24 23:06:10.418 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1047 ms
+2026-03-24 23:06:10.533 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-24 23:06:10.638 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-4} inited
+2026-03-24 23:06:11.087 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-24 23:06:11.088 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-24 23:06:12.109 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-24 23:06:12.543 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1afb827a
+2026-03-24 23:06:13.068 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-24 23:06:13.124 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-24 23:06:13.130 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-24 23:06:13.138 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 3.82 seconds (process running for 1343.577)
+2026-03-24 23:06:13.142 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-24 23:07:10.922 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-24 23:07:10.923 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-24 23:07:10.928 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms
+2026-03-24 23:07:11.056 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-24 23:07:11.058 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-24 23:07:11.063 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-24 23:07:11.076 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE user_id=?
+2026-03-24 23:07:11.077 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==> Parameters: 1(Long)
+2026-03-24 23:07:11.083 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectById - <==      Total: 1
+2026-03-24 23:07:11.084 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-24 23:07:11.084 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-24 23:07:11.086 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-24 23:09:05.445 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-24 23:09:05.446 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-24 23:09:05.449 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-24 23:09:05.485 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE (user_name = ?)
+2026-03-24 23:09:05.486 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==> Parameters: admin(String)
+2026-03-24 23:09:05.488 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.BlogUserMapper.selectList - <==      Total: 0
+2026-03-24 23:09:13.456 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-24 23:09:13.456 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-24 23:09:13.458 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-24 23:09:13.460 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE user_id=?
+2026-03-24 23:09:13.461 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==> Parameters: 1(Long)
+2026-03-24 23:09:13.464 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.BlogUserMapper.selectById - <==      Total: 1
+2026-03-24 23:09:13.464 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-24 23:09:13.465 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-24 23:09:13.466 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
