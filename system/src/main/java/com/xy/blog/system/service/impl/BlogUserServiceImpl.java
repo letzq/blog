@@ -51,7 +51,7 @@ public class BlogUserServiceImpl extends ServiceImpl<BlogUserMapper, BlogUser> i
 
     @Override
     public BlogUser getByUserName(String userName) {
-        return this.getOne(Wrappers.<BlogUser>lambdaQuery().eq(BlogUser::getUserName, userName));
+        return this.baseMapper.selectByUserNameCaseSensitive(userName);
     }
 
     @Override

@@ -21,4 +21,11 @@ public class BlogRoleServiceImpl extends ServiceImpl<BlogRoleMapper, BlogRole> i
             .eq(BlogRole::getDelFlag, "0")
             .orderByAsc(BlogRole::getRoleSort, BlogRole::getRoleId));
     }
+
+    @Override
+    public BlogRole getByRoleKey(String roleKey) {
+        return this.getOne(Wrappers.<BlogRole>lambdaQuery()
+            .eq(BlogRole::getRoleKey, roleKey)
+            .last("LIMIT 1"));
+    }
 }

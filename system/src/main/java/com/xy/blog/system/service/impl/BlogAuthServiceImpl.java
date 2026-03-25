@@ -16,9 +16,11 @@ import com.xy.blog.system.dto.PasswordCodeSendDto;
 import com.xy.blog.system.dto.PasswordResetDto;
 import com.xy.blog.system.dto.RegisterDto;
 import com.xy.blog.system.entity.po.BlogLoginLog;
+import com.xy.blog.system.entity.po.BlogRole;
 import com.xy.blog.system.entity.po.BlogUser;
 import com.xy.blog.system.service.IBlogAuthService;
 import com.xy.blog.system.service.IBlogLoginLogService;
+import com.xy.blog.system.service.IBlogRoleService;
 import com.xy.blog.system.service.IBlogUserService;
 import com.xy.blog.system.vo.BlogLoginVo;
 import com.xy.blog.system.vo.BlogUserVo;
@@ -32,6 +34,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Base64;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -54,8 +57,10 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     private static final long EMAIL_SEND_LIMIT_SECONDS = 60L;
     private static final int LOGIN_CAPTCHA_LENGTH = 4;
     private static final char[] CAPTCHA_CHARS = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
+    private static final String DEFAULT_REGISTER_ROLE_KEY = "author";
 
     private final IBlogUserService blogUserService;
+    private final IBlogRoleService blogRoleService;
     private final IBlogLoginLogService blogLoginLogService;
     private final RedisCache redisCache;
     private final MailService mailService;
@@ -152,12 +157,20 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
             "邮箱验证码错误"
         );
 
+        BlogRole authorRole = blogRoleService.getByRoleKey(DEFAULT_REGISTER_ROLE_KEY);
+        if (authorRole == null || !"1".equals(authorRole.getStatus()) || !"0".equals(authorRole.getDelFlag())) {
+            throw new BusinessException("默认注册角色author不存在或不可用");
+        }
+
         BlogUserCreateDto createDto = new BlogUserCreateDto();
         createDto.setUserName(dto.getUserName());
         createDto.setNickName(dto.getNickName());
         createDto.setEmail(email);
         createDto.setPhonenumber(dto.getPhonenumber());
         createDto.setPassword(dto.getPassword());
+        createDto.setStatus("1");
+        createDto.setRoleIds(List.of(authorRole.getRoleId()));
+
         BlogUserVo userVo = blogUserService.createUser(createDto);
         UserContext.set(userVo.getUserId(), userVo.getUserName());
         return userVo;

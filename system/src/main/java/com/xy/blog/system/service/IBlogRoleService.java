@@ -13,4 +13,9 @@ public interface IBlogRoleService extends IService<BlogRole> {
      * 查询所有可分配角色。
      */
     List<BlogRole> listAssignableRoles();
+
+    /**
+     * 根据角色标识查询角色。
+     */
+    BlogRole getByRoleKey(String roleKey);
 }
