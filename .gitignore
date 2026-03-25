@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local Runtime ###
+logs/
+
+### Local Config ###
+admin/src/main/resources/application-local.yml
+admin/src/main/resources/mail-local.yml
+admin/src/main/resources/oss-local.yml
