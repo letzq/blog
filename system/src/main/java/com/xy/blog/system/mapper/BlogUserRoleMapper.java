@@ -22,4 +22,14 @@ public interface BlogUserRoleMapper extends BaseMapper<BlogUserRole> {
           AND role.del_flag = '0'
         """)
     List<String> selectRoleKeysByUserId(Long userId);
+
+    /**
+     * 根据用户ID查询角色ID列表。
+     */
+    @Select("""
+        SELECT role_id
+        FROM blog_user_role
+        WHERE user_id = #{userId}
+        """)
+    List<Long> selectRoleIdsByUserId(Long userId);
 }

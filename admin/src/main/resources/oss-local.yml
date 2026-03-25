@@ -1,0 +1,8 @@
+blog:
+  oss:
+    enabled: true
+    endpoint: oss-cn-beijing.aliyuncs.com
+    access-key-id: LTAI5tAT7RBavmLZc7VfmzNg
+    access-key-secret: lr6W4WpgMoDGP7vbtzjPe3t56y64H7
+    bucket-name: ncbc-ai
+    domain: https://ncbc-ai.oss-cn-beijing.aliyuncs.com

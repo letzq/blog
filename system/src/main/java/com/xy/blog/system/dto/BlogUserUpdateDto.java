@@ -4,22 +4,22 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.util.List;
 import lombok.Data;
 
 /**
- * 用户新增参数。
+ * 用户修改参数。
  */
 @Data
-@Schema(name = "BlogUserCreateDto", description = "用户新增参数")
-public class BlogUserCreateDto {
+@Schema(name = "BlogUserUpdateDto", description = "用户修改参数")
+public class BlogUserUpdateDto {
 
-    @Schema(description = "登录账号")
-    @NotBlank(message = "登录账号不能为空")
-    @Size(max = 30, message = "登录账号长度不能超过30个字符")
-    private String userName;
+    @Schema(description = "用户ID")
+    @NotNull(message = "用户ID不能为空")
+    private Long userId;
 
     @Schema(description = "用户昵称")
     @NotBlank(message = "用户昵称不能为空")
@@ -35,10 +35,12 @@ public class BlogUserCreateDto {
     @Pattern(regexp = "^1[3-9]\\d{9}$", message = "手机号格式不正确")
     private String phonenumber;
 
-    @Schema(description = "登录密码")
-    @NotBlank(message = "登录密码不能为空")
-    @Size(min = 6, max = 20, message = "登录密码长度必须在6到20个字符之间")
-    private String password;
+    @Schema(description = "头像地址")
+    @Size(max = 255, message = "头像地址长度不能超过255个字符")
+    private String avatar;
+
+    @Schema(description = "性别")
+    private String sex;
 
     @Schema(description = "状态")
     @NotBlank(message = "状态不能为空")

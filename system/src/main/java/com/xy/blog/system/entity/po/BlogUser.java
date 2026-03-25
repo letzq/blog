@@ -35,7 +35,7 @@ public class BlogUser extends BaseEntity {
     @TableField("email")
     private String email;
 
-    @Schema(description = "手机号码")
+    @Schema(description = "手机号")
     @TableField("phonenumber")
     private String phonenumber;
 
@@ -47,15 +47,15 @@ public class BlogUser extends BaseEntity {
     @TableField("avatar")
     private String avatar;
 
-    @Schema(description = "用户性别（0未知 1男 2女）")
+    @Schema(description = "性别，0未知 1男 2女")
     @TableField("sex")
     private String sex;
 
-    @Schema(description = "账号状态（0停用 1正常）")
+    @Schema(description = "账号状态，0停用 1正常")
     @TableField("status")
     private String status;
 
-    @Schema(description = "删除标志（0存在 1删除）")
+    @Schema(description = "删除标志，0存在 1删除")
     @TableField("del_flag")
     private String delFlag;
 

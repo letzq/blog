@@ -1,9 +1,11 @@
 package com.xy.blog.system.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xy.blog.system.entity.po.BlogUserRole;
 import com.xy.blog.system.mapper.BlogUserRoleMapper;
 import com.xy.blog.system.service.IBlogUserRoleService;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,37 @@ public class BlogUserRoleServiceImpl extends ServiceImpl<BlogUserRoleMapper, Blo
     @Override
     public List<String> listRoleKeysByUserId(Long userId) {
         return this.baseMapper.selectRoleKeysByUserId(userId);
+    }
+
+    @Override
+    public List<Long> listRoleIdsByUserId(Long userId) {
+        return this.baseMapper.selectRoleIdsByUserId(userId);
+    }
+
+    @Override
+    public void replaceUserRoles(Long userId, List<Long> roleIds) {
+        this.remove(Wrappers.<BlogUserRole>lambdaQuery().eq(BlogUserRole::getUserId, userId));
+        if (roleIds == null || roleIds.isEmpty()) {
+            return;
+        }
+        List<BlogUserRole> userRoles = roleIds.stream()
+            .distinct()
+            .map(roleId -> {
+                BlogUserRole userRole = new BlogUserRole();
+                userRole.setUserId(userId);
+                userRole.setRoleId(roleId);
+                userRole.setCreateTime(LocalDateTime.now());
+                return userRole;
+            })
+            .toList();
+        this.saveBatch(userRoles);
+    }
+
+    @Override
+    public void deleteByUserIds(List<Long> userIds) {
+        if (userIds == null || userIds.isEmpty()) {
+            return;
+        }
+        this.remove(Wrappers.<BlogUserRole>lambdaQuery().in(BlogUserRole::getUserId, userIds));
     }
 }

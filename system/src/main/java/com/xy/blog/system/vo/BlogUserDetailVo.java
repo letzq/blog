@@ -6,12 +6,12 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * 当前登录用户信息返回对象。
+ * 用户详情返回对象。
  */
 @Data
 @Builder
-@Schema(name = "CurrentUserInfoVo", description = "当前登录用户信息")
-public class CurrentUserInfoVo {
+@Schema(name = "BlogUserDetailVo", description = "用户详情返回对象")
+public class BlogUserDetailVo {
 
     @Schema(description = "用户ID")
     private Long userId;
@@ -37,9 +37,9 @@ public class CurrentUserInfoVo {
     @Schema(description = "状态")
     private String status;
 
+    @Schema(description = "角色ID列表")
+    private List<Long> roleIds;
+
     @Schema(description = "角色标识列表")
     private List<String> roles;
-
-    @Schema(description = "权限标识列表")
-    private List<String> permissions;
 }

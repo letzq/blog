@@ -20,7 +20,6 @@ import com.xy.blog.system.entity.po.BlogUser;
 import com.xy.blog.system.service.IBlogAuthService;
 import com.xy.blog.system.service.IBlogLoginLogService;
 import com.xy.blog.system.service.IBlogUserService;
-import com.xy.blog.system.service.IBlogUserRoleService;
 import com.xy.blog.system.vo.BlogLoginVo;
 import com.xy.blog.system.vo.BlogUserVo;
 import com.xy.blog.system.vo.CaptchaVo;
@@ -39,11 +38,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import javax.imageio.ImageIO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * 博客认证服务实现。
@@ -59,7 +56,6 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
     private static final char[] CAPTCHA_CHARS = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ".toCharArray();
 
     private final IBlogUserService blogUserService;
-    private final IBlogUserRoleService blogUserRoleService;
     private final IBlogLoginLogService blogLoginLogService;
     private final RedisCache redisCache;
     private final MailService mailService;
@@ -110,7 +106,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
         String sendLimitKey = buildSendLimitKey(scene, email);
         if (redisCache.hasKey(sendLimitKey)) {
-            throw new BusinessException("验证码发送过于频繁，请 60 秒后再试");
+            throw new BusinessException("验证码发送过于频繁，请60秒后再试");
         }
 
         String code = generateNumericCode();
@@ -178,13 +174,13 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
         String sendLimitKey = CacheConstants.PASSWORD_RESET_SEND_LIMIT_KEY_PREFIX + email;
         if (redisCache.hasKey(sendLimitKey)) {
-            throw new BusinessException("验证码发送过于频繁，请 60 秒后再试");
+            throw new BusinessException("验证码发送过于频繁，请60秒后再试");
         }
 
         String code = generateNumericCode();
         redisCache.setCacheObject(CacheConstants.PASSWORD_RESET_CODE_KEY_PREFIX + email, code, EMAIL_CODE_EXPIRE_MINUTES, TimeUnit.MINUTES);
         redisCache.setCacheObject(sendLimitKey, "1", EMAIL_SEND_LIMIT_SECONDS, TimeUnit.SECONDS);
-        mailService.sendTextMail(email, "博客系统找回密码验证码", "您本次找回密码的验证码为：" + code + "，5 分钟内有效，请勿泄露给他人。");
+        mailService.sendTextMail(email, "博客系统找回密码验证码", "您本次找回密码的验证码为：" + code + "，5分钟内有效，请勿泄露给他人。");
     }
 
     @Override
@@ -210,29 +206,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
     @Override
     public CurrentUserInfoVo getCurrentUserInfo() {
-        Long userId = UserContext.getUserId();
-        if (userId == null) {
-            throw new BusinessException("当前未登录或登录状态已失效");
-        }
-        BlogUser user = blogUserService.getById(userId);
-        if (user == null) {
-            throw new BusinessException("当前登录用户不存在");
-        }
-        List<String> roleKeys = blogUserRoleService.listRoleKeysByUserId(userId);
-        if (roleKeys == null) {
-            roleKeys = Collections.emptyList();
-        }
-        return CurrentUserInfoVo.builder()
-            .userId(user.getUserId())
-            .userName(user.getUserName())
-            .nickName(user.getNickName())
-            .email(user.getEmail())
-            .phonenumber(user.getPhonenumber())
-            .avatar(user.getAvatar())
-            .status(user.getStatus())
-            .roles(roleKeys)
-            .permissions(Collections.emptyList())
-            .build();
+        return blogUserService.getCurrentUserProfile();
     }
 
     @Override
@@ -373,7 +347,7 @@ public class BlogAuthServiceImpl implements IBlogAuthService {
 
     private String buildContent(String scene, String code) {
         String action = "LOGIN".equals(scene) ? "登录" : "注册";
-        return "您本次" + action + "的验证码为：" + code + "，5 分钟内有效，请勿泄露给他人。";
+        return "您本次" + action + "的验证码为：" + code + "，5分钟内有效，请勿泄露给他人。";
     }
 
     private BlogLoginVo buildLoginVo(BlogUser user) {

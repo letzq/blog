@@ -1,17 +1,18 @@
 package com.xy.blog.system.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 
 /**
- * 当前登录用户信息返回对象。
+ * 用户列表返回对象。
  */
 @Data
 @Builder
-@Schema(name = "CurrentUserInfoVo", description = "当前登录用户信息")
-public class CurrentUserInfoVo {
+@Schema(name = "BlogUserListVo", description = "用户列表返回对象")
+public class BlogUserListVo {
 
     @Schema(description = "用户ID")
     private Long userId;
@@ -31,15 +32,18 @@ public class CurrentUserInfoVo {
     @Schema(description = "头像")
     private String avatar;
 
-    @Schema(description = "性别")
-    private String sex;
-
     @Schema(description = "状态")
     private String status;
 
+    @Schema(description = "最后登录IP")
+    private String loginIp;
+
+    @Schema(description = "最后登录时间")
+    private LocalDateTime loginDate;
+
+    @Schema(description = "创建时间")
+    private LocalDateTime createTime;
+
     @Schema(description = "角色标识列表")
     private List<String> roles;
-
-    @Schema(description = "权限标识列表")
-    private List<String> permissions;
 }
