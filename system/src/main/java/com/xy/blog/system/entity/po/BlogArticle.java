@@ -63,7 +63,7 @@ public class BlogArticle extends BaseEntity {
     @TableField("allow_comment")
     private String allowComment;
 
-    @Schema(description = "状态，0草稿1已发布2下线")
+    @Schema(description = "文章状态，0草稿1已发布2下线")
     @TableField("status")
     private String status;
 

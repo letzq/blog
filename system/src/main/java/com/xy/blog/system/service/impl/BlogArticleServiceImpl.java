@@ -8,6 +8,11 @@ import com.xy.blog.framework.exception.BusinessException;
 import com.xy.blog.framework.security.context.UserContext;
 import com.xy.blog.framework.web.page.TableDataInfo;
 import com.xy.blog.system.dto.BlogArticleAppQueryDto;
+import com.xy.blog.system.dto.BlogArticleChangeStatusDto;
+import com.xy.blog.system.dto.BlogArticleChangeTopDto;
+import com.xy.blog.system.dto.BlogArticleCreateDto;
+import com.xy.blog.system.dto.BlogArticleQueryDto;
+import com.xy.blog.system.dto.BlogArticleUpdateDto;
 import com.xy.blog.system.dto.BlogUserArticleCreateDto;
 import com.xy.blog.system.dto.BlogUserArticlePublishDto;
 import com.xy.blog.system.dto.BlogUserArticleQueryDto;
@@ -22,6 +27,8 @@ import com.xy.blog.system.vo.AppArticleArchiveItemVo;
 import com.xy.blog.system.vo.AppArticleArchiveVo;
 import com.xy.blog.system.vo.AppArticleDetailVo;
 import com.xy.blog.system.vo.AppArticleListVo;
+import com.xy.blog.system.vo.BlogArticleDetailVo;
+import com.xy.blog.system.vo.BlogArticleListVo;
 import com.xy.blog.system.vo.BlogUserArticleDetailVo;
 import com.xy.blog.system.vo.BlogUserArticleListVo;
 import java.time.LocalDateTime;
@@ -47,6 +54,84 @@ public class BlogArticleServiceImpl extends ServiceImpl<BlogArticleMapper, BlogA
     private final IBlogArticleCategoryService blogArticleCategoryService;
     private final BlogTagMapper blogTagMapper;
     private final BlogArticleTagMapper blogArticleTagMapper;
+
+    @Override
+    public TableDataInfo<BlogArticleListVo> selectAdminArticlePage(BlogArticleQueryDto dto) {
+        Page<BlogArticleListVo> page = dto.buildPage();
+        IPage<BlogArticleListVo> result = this.baseMapper.selectAdminArticlePage(page, dto);
+        return TableDataInfo.build(result);
+    }
+
+    @Override
+    public BlogArticleDetailVo selectAdminArticleDetail(Long articleId) {
+        BlogArticleDetailVo detail = this.baseMapper.selectAdminArticleDetail(articleId);
+        if (detail == null) {
+            throw new BusinessException("文章不存在");
+        }
+        detail.setTagIds(defaultTagIds(blogArticleTagMapper.selectTagIdsByArticleId(articleId)));
+        return detail;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Long createAdminArticle(BlogArticleCreateDto dto) {
+        Long userId = getCurrentUserId();
+        validateArticlePayload(dto.getCategoryId(), dto.getTagIds(), dto.getIsOriginal(), dto.getOriginalUrl(), dto.getStatus());
+
+        BlogArticle article = new BlogArticle();
+        article.setUserId(userId);
+        fillArticle(article, dto.getTitle(), dto.getSummary(), dto.getCoverImage(), dto.getCategoryId(), dto.getContentMd(),
+            dto.getAllowComment(), dto.getIsOriginal(), dto.getOriginalUrl(), dto.getStatus(), dto.getIsTop());
+        this.save(article);
+        replaceArticleTags(article.getArticleId(), dto.getTagIds());
+        return article.getArticleId();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateAdminArticle(BlogArticleUpdateDto dto) {
+        BlogArticle article = getExistingArticle(dto.getArticleId(), "文章不存在");
+        validateArticlePayload(dto.getCategoryId(), dto.getTagIds(), dto.getIsOriginal(), dto.getOriginalUrl(), dto.getStatus());
+        fillArticle(article, dto.getTitle(), dto.getSummary(), dto.getCoverImage(), dto.getCategoryId(), dto.getContentMd(),
+            dto.getAllowComment(), dto.getIsOriginal(), dto.getOriginalUrl(), dto.getStatus(), dto.getIsTop());
+        this.updateById(article);
+        replaceArticleTags(article.getArticleId(), dto.getTagIds());
+    }
+
+    @Override
+    public void changeAdminArticleStatus(BlogArticleChangeStatusDto dto) {
+        validateStatus(dto.getStatus());
+        BlogArticle article = getExistingArticle(dto.getArticleId(), "文章不存在");
+        article.setStatus(dto.getStatus());
+        if ("1".equals(dto.getStatus()) && article.getPublishTime() == null) {
+            article.setPublishTime(LocalDateTime.now());
+        }
+        this.updateById(article);
+    }
+
+    @Override
+    public void changeAdminArticleTop(BlogArticleChangeTopDto dto) {
+        String safeTop = defaultFlag(dto.getIsTop(), "0");
+        if (!List.of("0", "1").contains(safeTop)) {
+            throw new BusinessException("置顶状态不合法");
+        }
+        BlogArticle article = getExistingArticle(dto.getArticleId(), "文章不存在");
+        article.setIsTop(safeTop);
+        this.updateById(article);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteAdminArticles(List<Long> articleIds) {
+        validateArticleIds(articleIds, "请选择要删除的文章");
+        List<Long> distinctIds = articleIds.stream().distinct().toList();
+        long count = this.count(Wrappers.<BlogArticle>lambdaQuery().in(BlogArticle::getArticleId, distinctIds));
+        if (count != distinctIds.size()) {
+            throw new BusinessException("存在文章不存在");
+        }
+        this.removeByIds(distinctIds);
+        distinctIds.forEach(blogArticleTagMapper::deleteByArticleId);
+    }
 
     @Override
     public TableDataInfo<AppArticleListVo> selectPublicArticlePage(BlogArticleAppQueryDto dto) {
@@ -114,10 +199,7 @@ public class BlogArticleServiceImpl extends ServiceImpl<BlogArticleMapper, BlogA
         if (detail == null) {
             throw new BusinessException("文章不存在或无权访问");
         }
-        detail.setTagIds(blogArticleTagMapper.selectTagIdsByArticleId(articleId));
-        if (detail.getTagIds() == null) {
-            detail.setTagIds(Collections.emptyList());
-        }
+        detail.setTagIds(defaultTagIds(blogArticleTagMapper.selectTagIdsByArticleId(articleId)));
         return detail;
     }
 
@@ -150,18 +232,17 @@ public class BlogArticleServiceImpl extends ServiceImpl<BlogArticleMapper, BlogA
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteCurrentUserArticles(List<Long> articleIds) {
-        if (articleIds == null || articleIds.isEmpty()) {
-            throw new BusinessException("请选择要删除的文章");
-        }
+        validateArticleIds(articleIds, "请选择要删除的文章");
         Long userId = getCurrentUserId();
+        List<Long> distinctIds = articleIds.stream().distinct().toList();
         List<BlogArticle> articles = this.list(Wrappers.<BlogArticle>lambdaQuery()
-            .in(BlogArticle::getArticleId, articleIds)
+            .in(BlogArticle::getArticleId, distinctIds)
             .eq(BlogArticle::getUserId, userId));
-        if (articles.size() != articleIds.stream().distinct().count()) {
+        if (articles.size() != distinctIds.size()) {
             throw new BusinessException("存在文章不存在或无权删除");
         }
-        this.removeByIds(articleIds);
-        articleIds.forEach(blogArticleTagMapper::deleteByArticleId);
+        this.removeByIds(distinctIds);
+        distinctIds.forEach(blogArticleTagMapper::deleteByArticleId);
     }
 
     @Override
@@ -249,12 +330,30 @@ public class BlogArticleServiceImpl extends ServiceImpl<BlogArticleMapper, BlogA
         return article;
     }
 
+    private BlogArticle getExistingArticle(Long articleId, String message) {
+        BlogArticle article = this.getById(articleId);
+        if (article == null) {
+            throw new BusinessException(message);
+        }
+        return article;
+    }
+
     private Long getCurrentUserId() {
         Long userId = UserContext.getUserId();
         if (userId == null) {
             throw new BusinessException("当前未登录或登录状态已失效");
         }
         return userId;
+    }
+
+    private void validateArticleIds(List<Long> articleIds, String message) {
+        if (articleIds == null || articleIds.isEmpty()) {
+            throw new BusinessException(message);
+        }
+    }
+
+    private List<Long> defaultTagIds(List<Long> tagIds) {
+        return tagIds == null ? Collections.emptyList() : tagIds;
     }
 
     private String defaultFlag(String value, String defaultValue) {

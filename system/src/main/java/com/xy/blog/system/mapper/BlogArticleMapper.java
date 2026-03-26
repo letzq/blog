@@ -4,12 +4,15 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.xy.blog.system.dto.BlogArticleAppQueryDto;
+import com.xy.blog.system.dto.BlogArticleQueryDto;
 import com.xy.blog.system.dto.BlogUserArticleQueryDto;
 import com.xy.blog.system.entity.po.BlogArticle;
 import com.xy.blog.system.vo.AppArticleArchiveItemVo;
 import com.xy.blog.system.vo.AppArticleDetailVo;
 import com.xy.blog.system.vo.AppArticleListVo;
 import com.xy.blog.system.vo.AppArticleTagVo;
+import com.xy.blog.system.vo.BlogArticleDetailVo;
+import com.xy.blog.system.vo.BlogArticleListVo;
 import com.xy.blog.system.vo.BlogUserArticleDetailVo;
 import com.xy.blog.system.vo.BlogUserArticleListVo;
 import java.util.List;
@@ -21,6 +24,75 @@ import org.apache.ibatis.annotations.Update;
  * 博客文章 Mapper 接口。
  */
 public interface BlogArticleMapper extends BaseMapper<BlogArticle> {
+
+    @Select("""
+        <script>
+        SELECT a.article_id AS articleId,
+               a.title AS title,
+               a.summary AS summary,
+               a.cover_image AS coverImage,
+               a.category_id AS categoryId,
+               c.category_name AS categoryName,
+               a.user_id AS userId,
+               u.user_name AS userName,
+               u.nick_name AS nickName,
+               a.status AS status,
+               a.is_top AS isTop,
+               a.view_count AS viewCount,
+               a.like_count AS likeCount,
+               a.publish_time AS publishTime,
+               a.update_time AS updateTime
+        FROM blog_article a
+        LEFT JOIN blog_article_category c ON a.category_id = c.category_id
+        LEFT JOIN blog_user u ON a.user_id = u.user_id
+        WHERE 1 = 1
+        <if test="query.title != null and query.title != ''">
+            AND a.title LIKE CONCAT('%', #{query.title}, '%')
+        </if>
+        <if test="query.userName != null and query.userName != ''">
+            AND u.user_name LIKE CONCAT('%', #{query.userName}, '%')
+        </if>
+        <if test="query.categoryId != null">
+            AND a.category_id = #{query.categoryId}
+        </if>
+        <if test="query.status != null and query.status != ''">
+            AND a.status = #{query.status}
+        </if>
+        <if test="query.isTop != null and query.isTop != ''">
+            AND a.is_top = #{query.isTop}
+        </if>
+        ORDER BY a.is_top DESC, a.update_time DESC, a.article_id DESC
+        </script>
+        """)
+    IPage<BlogArticleListVo> selectAdminArticlePage(Page<BlogArticleListVo> page, @Param("query") BlogArticleQueryDto query);
+
+    @Select("""
+        SELECT a.article_id AS articleId,
+               a.title AS title,
+               a.summary AS summary,
+               a.cover_image AS coverImage,
+               a.content_md AS contentMd,
+               a.category_id AS categoryId,
+               c.category_name AS categoryName,
+               a.user_id AS userId,
+               u.user_name AS userName,
+               u.nick_name AS nickName,
+               a.status AS status,
+               a.is_top AS isTop,
+               a.is_original AS isOriginal,
+               a.original_url AS originalUrl,
+               a.allow_comment AS allowComment,
+               a.view_count AS viewCount,
+               a.like_count AS likeCount,
+               a.publish_time AS publishTime,
+               a.update_time AS updateTime
+        FROM blog_article a
+        LEFT JOIN blog_article_category c ON a.category_id = c.category_id
+        LEFT JOIN blog_user u ON a.user_id = u.user_id
+        WHERE a.article_id = #{articleId}
+        LIMIT 1
+        """)
+    BlogArticleDetailVo selectAdminArticleDetail(@Param("articleId") Long articleId);
 
     @Select("""
         <script>
