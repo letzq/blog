@@ -1685,3 +1685,1435 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'R
 2026-03-26 01:09:04.052 [http-nio-8080-exec-10] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
 2026-03-26 01:09:04.052 [http-nio-8080-exec-10] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 3(Long)
 2026-03-26 01:09:04.054 [http-nio-8080-exec-10] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-26 15:19:33.987 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.B.selectByUserNameCaseSensitive - ==>  Preparing: SELECT * FROM blog_user WHERE BINARY user_name = ? LIMIT 1
+2026-03-26 15:19:33.995 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.B.selectByUserNameCaseSensitive - ==> Parameters: root(String)
+2026-03-26 15:19:34.049 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.B.selectByUserNameCaseSensitive - <==      Total: 1
+2026-03-26 15:19:34.214 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.BlogLoginLogMapper.insert - ==>  Preparing: INSERT INTO blog_login_log ( user_id, user_name, login_type, email, login_ip, login_location, browser, os, device_info, status, message, login_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2026-03-26 15:19:34.216 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.BlogLoginLogMapper.insert - ==> Parameters: 1(Long), root(String), PASSWORD(String), 489572770@qq.com(String), 0:0:0:0:0:0:0:1(String), (String), Safari(String), macOS(String), Mobile(String), 1(String), 登录成功(String), 2026-03-26T15:19:34.209256(LocalDateTime)
+2026-03-26 15:19:34.247 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.BlogLoginLogMapper.insert - <==    Updates: 1
+2026-03-26 15:19:34.253 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==>  Preparing: INSERT INTO blog_oper_log ( title, business_type, method, request_method, oper_name, oper_url, oper_ip, oper_location, oper_param, json_result, status, error_msg, cost_time, oper_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2026-03-26 15:19:34.257 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==> Parameters: 认证管理(String), LOGIN(String), com.xy.blog.controller.AuthController.login()(String), POST(String), root(String), /auth/login(String), 0:0:0:0:0:0:0:1(String), (String), [{"userName":"root","password":"******","captchaKey":"82b00566a0574af48d9eae85494df311","captchaCode":"******"}](String), {"code":200,"msg":"操作成功","data":{"token":"******","header":"Authorization","prefix":"Bearer ","expireTime":360,"userName":"root"}}(String), 1(String), (String), 510(Long), 2026-03-26T15:19:34.249298200(LocalDateTime)
+2026-03-26 15:19:34.264 [http-nio-8080-exec-1] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - <==    Updates: 1
+2026-03-26 15:19:34.293 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-26 15:19:34.295 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-26 15:19:34.306 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-26 15:19:34.309 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE user_id=?
+2026-03-26 15:19:34.310 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==> Parameters: 1(Long)
+2026-03-26 15:19:34.314 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.BlogUserMapper.selectById - <==      Total: 1
+2026-03-26 15:19:34.317 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-26 15:19:34.317 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-26 15:19:34.320 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-26 15:19:35.469 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-26 15:19:35.469 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-26 15:19:35.472 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-26 15:19:35.475 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE user_id=?
+2026-03-26 15:19:35.475 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==> Parameters: 1(Long)
+2026-03-26 15:19:35.478 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.BlogUserMapper.selectById - <==      Total: 1
+2026-03-26 15:19:35.479 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-26 15:19:35.479 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-26 15:19:35.483 [http-nio-8080-exec-3] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-26 15:19:58.016 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==>  Preparing: SELECT DISTINCT role.role_key FROM blog_user_role user_role INNER JOIN blog_role role ON role.role_id = user_role.role_id WHERE user_role.user_id = ? AND role.status = '1' AND role.del_flag = '0'
+2026-03-26 15:19:58.016 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - ==> Parameters: 1(Long)
+2026-03-26 15:19:58.017 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.B.selectRoleKeysByUserId - <==      Total: 1
+2026-03-26 15:19:58.067 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE user_id=?
+2026-03-26 15:19:58.067 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectById - ==> Parameters: 1(Long)
+2026-03-26 15:19:58.075 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectById - <==      Total: 1
+2026-03-26 15:19:58.085 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE (email = ?)
+2026-03-26 15:19:58.085 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==> Parameters: 489572770@qq.com(String)
+2026-03-26 15:19:58.090 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - <==      Total: 1
+2026-03-26 15:19:58.098 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==>  Preparing: SELECT user_id,user_name,nick_name,email,phonenumber,password,avatar,sex,status,del_flag,login_ip,login_date,wx_openid,wx_unionid,wx_nickname,wx_avatar,create_by,create_time,update_by,update_time,remark FROM blog_user WHERE (phonenumber = ?)
+2026-03-26 15:19:58.099 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - ==> Parameters: 14441378646(String)
+2026-03-26 15:19:58.102 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.selectList - <==      Total: 1
+2026-03-26 15:19:58.127 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.updateById - ==>  Preparing: UPDATE blog_user SET user_name=?, nick_name=?, email=?, phonenumber=?, password=?, avatar=?, sex=?, status=?, del_flag=?, create_by=?, create_time=?, update_by=?, update_time=? WHERE user_id=?
+2026-03-26 15:19:58.129 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.updateById - ==> Parameters: root(String), 渊(String), 489572770@qq.com(String), 14441378646(String), $2a$10$cJKnHAfULYWTHcAhQF9l6OYrgpoiO8pqiCWGyCC.gueTTZIJY/Cti(String), https://ncbc-ai.oss-cn-beijing.aliyuncs.com/avatar/2026/03/26/024989c622d5429f88695cb5b9771d2c.jpg(String), 1(String), 1(String), 0(String), system(String), 2026-03-24T02:31:03(LocalDateTime), system(String), 2026-03-24T15:55:57(LocalDateTime), 1(Long)
+2026-03-26 15:19:58.138 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogUserMapper.updateById - <==    Updates: 1
+2026-03-26 15:19:58.145 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==>  Preparing: INSERT INTO blog_oper_log ( title, business_type, method, request_method, oper_name, oper_url, oper_ip, oper_location, oper_param, json_result, status, error_msg, cost_time, oper_time ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )
+2026-03-26 15:19:58.147 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - ==> Parameters: 个人中心(String), UPDATE(String), com.xy.blog.controller.system.SysUserProfileController.updateProfile()(String), PUT(String), root(String), /system/user/profile(String), 0:0:0:0:0:0:0:1(String), (String), [{"nickName":"渊","email":"489572770@qq.com","phonenumber":"14441378646","sex":"1"}](String), (String), 1(String), (String), 72(Long), 2026-03-26T15:19:58.139548100(LocalDateTime)
+2026-03-26 15:19:58.153 [http-nio-8080-exec-4] DEBUG c.x.b.s.m.BlogOperLogMapper.insert - <==    Updates: 1
+2026-03-26 15:51:33.188 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 7 class path changes (0 additions, 7 deletions, 0 modifications)
+2026-03-26 15:51:33.234 [Thread-5] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 15:51:33.242 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:51:33.262 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 15:51:33.263 [Thread-5] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:51:33.357 [Thread-5] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2026-03-26 15:51:33.368 [Thread-5] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2026-03-26 15:51:33.984 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 15:51:33.984 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 15:51:33.984 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 15:51:34.325 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.xy.blog.security.service.UserAuthorityServiceImpl]
+2026-03-26 15:51:34.333 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 15:51:34.413 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.xy.blog.security.service.UserAuthorityServiceImpl]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:286)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:218)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:354)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:172)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:418)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:792)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:610)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.io.FileNotFoundException: class path resource [com/xy/blog/framework/security/service/UserAuthorityService.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:98)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:85)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:75)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:711)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getInterfaces(ConfigurationClassParser.java:1060)
+	at org.springframework.context.annotation.ConfigurationClassParser.processInterfaces(ConfigurationClassParser.java:441)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:385)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281)
+	... 21 common frames omitted
+2026-03-26 15:52:20.033 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 15:52:20.033 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 15:52:20.033 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 15:52:21.265 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 15:52:21.266 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 15:52:21.437 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 166 ms. Found 0 Redis repository interfaces.
+2026-03-26 15:52:22.078 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 15:52:22.081 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:22.082 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 15:52:22.082 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 15:52:22.160 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 15:52:22.160 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2121 ms
+2026-03-26 15:52:22.342 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 15:52:22.516 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-2} inited
+2026-03-26 15:52:23.058 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 15:52:23.060 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 15:52:23.497 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\BLOG\Blog\admin\target\classes\com\xy\blog\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogAuthServiceImpl' defined in file [D:\BLOG\Blog\system\target\classes\com\xy\blog\system\service\impl\BlogAuthServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogUserServiceImpl': Lookup method resolution failed
+2026-03-26 15:52:23.497 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-2} closing ...
+2026-03-26 15:52:23.503 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-2} closed
+2026-03-26 15:52:23.511 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-26 15:52:23.521 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 15:52:23.532 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [D:\BLOG\Blog\admin\target\classes\com\xy\blog\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogAuthServiceImpl' defined in file [D:\BLOG\Blog\system\target\classes\com\xy\blog\system\service\impl\BlogAuthServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogUserServiceImpl': Lookup method resolution failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'blogAuthServiceImpl' defined in file [D:\BLOG\Blog\system\target\classes\com\xy\blog\system\service\impl\BlogAuthServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'blogUserServiceImpl': Lookup method resolution failed
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'blogUserServiceImpl': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 38 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.xy.blog.system.service.impl.BlogUserServiceImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@509bf677]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476)
+	... 52 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/xy/blog/system/dto/BlogUserProfileUpdateDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 54 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.xy.blog.system.dto.BlogUserProfileUpdateDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 58 common frames omitted
+2026-03-26 15:52:32.674 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 15:52:32.675 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 15:52:32.675 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 15:52:33.477 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 15:52:33.477 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 15:52:33.603 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 123 ms. Found 0 Redis repository interfaces.
+2026-03-26 15:52:33.968 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 15:52:33.971 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:33.971 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 15:52:33.971 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 15:52:34.035 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 15:52:34.035 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1357 ms
+2026-03-26 15:52:34.161 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 15:52:34.286 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-3} inited
+2026-03-26 15:52:34.761 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 15:52:34.761 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 15:52:36.294 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 15:52:36.787 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@34589550
+2026-03-26 15:52:37.376 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 15:52:37.446 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:37.456 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 15:52:37.463 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.867 seconds (process running for 53253.978)
+2026-03-26 15:52:37.466 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 15:52:41.181 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 12 class path changes (4 additions, 0 deletions, 8 modifications)
+2026-03-26 15:52:41.183 [Thread-7] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 15:52:41.183 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:41.196 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 15:52:41.196 [Thread-7] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:41.200 [Thread-7] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-3} closing ...
+2026-03-26 15:52:41.205 [Thread-7] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-3} closed
+2026-03-26 15:52:41.361 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 15:52:41.363 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 15:52:41.363 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 15:52:42.155 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 15:52:42.155 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 15:52:42.280 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 122 ms. Found 0 Redis repository interfaces.
+2026-03-26 15:52:42.679 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 15:52:42.679 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:42.680 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 15:52:42.680 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 15:52:42.743 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 15:52:42.744 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1378 ms
+2026-03-26 15:52:42.862 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 15:52:42.984 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-4} inited
+2026-03-26 15:52:43.406 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 15:52:43.406 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 15:52:44.729 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 15:52:45.149 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3f41dbce
+2026-03-26 15:52:45.660 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 15:52:45.716 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 15:52:45.725 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 15:52:45.733 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.433 seconds (process running for 53262.248)
+2026-03-26 15:52:45.740 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   OssController matched:
+      - @ConditionalOnProperty (blog.oss.enabled=true) matched (OnPropertyCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2026-03-26 16:14:21.973 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 16 class path changes (0 additions, 16 deletions, 0 modifications)
+2026-03-26 16:14:21.980 [Thread-16] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:14:21.981 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:21.994 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:14:21.994 [Thread-16] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:22.000 [Thread-16] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-4} closing ...
+2026-03-26 16:14:22.010 [Thread-16] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-4} closed
+2026-03-26 16:14:22.309 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:14:22.310 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:14:22.311 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:14:23.529 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:14:23.531 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:14:23.665 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 131 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:14:24.223 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:14:24.226 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:24.226 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:14:24.226 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:14:24.300 [restartedMain] INFO  o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:14:24.300 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1972 ms
+2026-03-26 16:14:24.468 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:14:24.730 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-5} inited
+2026-03-26 16:14:25.247 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:14:25.248 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:14:25.677 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+2026-03-26 16:14:25.679 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-5} closing ...
+2026-03-26 16:14:25.685 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-5} closed
+2026-03-26 16:14:25.691 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-26 16:14:25.703 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 16:14:25.718 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.xy.blog.controller.app.AppArticleController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@ed08cbf]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476)
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/xy/blog/system/dto/BlogArticleAppQueryDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.xy.blog.system.dto.BlogArticleAppQueryDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 30 common frames omitted
+2026-03-26 16:14:36.017 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:14:36.017 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:14:36.017 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:14:36.822 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:14:36.822 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:14:36.943 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 120 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:14:37.313 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:14:37.315 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:37.316 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:14:37.316 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:14:37.372 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:14:37.372 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1350 ms
+2026-03-26 16:14:37.544 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:14:37.674 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-6} inited
+2026-03-26 16:14:38.164 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:14:38.165 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:14:39.650 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:14:40.136 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@50e11c33
+2026-03-26 16:14:40.706 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:14:40.766 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:40.775 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:14:40.780 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.846 seconds (process running for 54577.282)
+2026-03-26 16:14:40.783 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 16:14:44.481 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 12 class path changes (4 additions, 0 deletions, 8 modifications)
+2026-03-26 16:14:44.483 [Thread-20] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:14:44.485 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:44.497 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:14:44.499 [Thread-20] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:44.502 [Thread-20] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-6} closing ...
+2026-03-26 16:14:44.506 [Thread-20] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-6} closed
+2026-03-26 16:14:44.684 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:14:44.684 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:14:44.686 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:14:45.511 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:14:45.511 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:14:45.614 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 98 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:14:45.967 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:14:45.968 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:45.969 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:14:45.970 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:14:46.031 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:14:46.031 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1341 ms
+2026-03-26 16:14:46.154 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:14:46.282 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-7} inited
+2026-03-26 16:14:46.680 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:14:46.681 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:14:47.973 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:14:48.392 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1d31e0e1
+2026-03-26 16:14:48.919 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:14:48.973 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:14:48.981 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:14:48.988 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.388 seconds (process running for 54585.49)
+2026-03-26 16:14:48.991 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   OssController matched:
+      - @ConditionalOnProperty (blog.oss.enabled=true) matched (OnPropertyCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2026-03-26 16:21:48.149 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 18 class path changes (0 additions, 18 deletions, 0 modifications)
+2026-03-26 16:21:48.153 [Thread-27] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:21:48.153 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:21:48.169 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:21:48.170 [Thread-27] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:21:48.174 [Thread-27] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-7} closing ...
+2026-03-26 16:21:48.179 [Thread-27] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-7} closed
+2026-03-26 16:21:48.422 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:21:48.422 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:21:48.423 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:21:49.492 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:21:49.492 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:21:49.609 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 113 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:21:50.096 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:21:50.099 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:21:50.099 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:21:50.099 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:21:50.174 [restartedMain] INFO  o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:21:50.176 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1742 ms
+2026-03-26 16:21:50.329 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:21:50.519 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-8} inited
+2026-03-26 16:21:51.021 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:21:51.022 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:21:51.394 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+2026-03-26 16:21:51.394 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-8} closing ...
+2026-03-26 16:21:51.397 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-8} closed
+2026-03-26 16:21:51.401 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-26 16:21:51.407 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 16:21:51.417 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.xy.blog.controller.app.AppArticleController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@fdb1463]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476)
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/xy/blog/system/dto/BlogArticleAppQueryDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.xy.blog.system.dto.BlogArticleAppQueryDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 30 common frames omitted
+2026-03-26 16:22:02.257 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:22:02.257 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:22:02.258 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:22:03.073 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:22:03.073 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:22:03.195 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 119 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:22:03.552 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:22:03.553 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:22:03.553 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:22:03.553 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:22:03.619 [restartedMain] INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:22:03.620 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1359 ms
+2026-03-26 16:22:03.743 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:22:03.871 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-9} inited
+2026-03-26 16:22:04.297 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:22:04.297 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:22:05.945 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:22:06.421 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@f01216a
+2026-03-26 16:22:06.965 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:22:07.034 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:22:07.049 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:22:07.056 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.865 seconds (process running for 55023.554)
+2026-03-26 16:22:07.059 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 16:22:10.734 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 13 class path changes (5 additions, 0 deletions, 8 modifications)
+2026-03-26 16:22:10.736 [Thread-31] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:22:10.737 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:22:10.749 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:22:10.750 [Thread-31] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:22:10.754 [Thread-31] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-9} closing ...
+2026-03-26 16:22:10.759 [Thread-31] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-9} closed
+2026-03-26 16:22:10.934 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:22:10.935 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:22:10.935 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:22:11.689 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:22:11.689 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:22:11.799 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:22:12.113 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:22:12.115 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:22:12.115 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:22:12.116 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:22:12.171 [restartedMain] INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:22:12.171 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1232 ms
+2026-03-26 16:22:12.284 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:22:12.394 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-10} inited
+2026-03-26 16:22:12.784 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:22:12.784 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:22:14.076 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:22:14.498 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3dab3591
+2026-03-26 16:22:14.977 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:22:15.029 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:22:15.037 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:22:15.042 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.186 seconds (process running for 55031.539)
+2026-03-26 16:22:15.044 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   OssController matched:
+      - @ConditionalOnProperty (blog.oss.enabled=true) matched (OnPropertyCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2026-03-26 16:24:32.981 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 3 class path changes (0 additions, 3 deletions, 0 modifications)
+2026-03-26 16:24:32.988 [Thread-38] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:24:32.989 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:33.000 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:24:33.000 [Thread-38] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:33.004 [Thread-38] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-10} closing ...
+2026-03-26 16:24:33.008 [Thread-38] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-10} closed
+2026-03-26 16:24:33.138 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:24:33.138 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:24:33.138 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:24:33.546 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:24:33.546 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:24:33.613 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 65 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:24:33.806 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:24:33.808 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:33.808 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:24:33.808 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:24:33.839 [restartedMain] INFO  o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:24:33.839 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 698 ms
+2026-03-26 16:24:33.919 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:24:34.034 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-11} inited
+2026-03-26 16:24:34.199 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:24:34.199 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:24:34.402 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+2026-03-26 16:24:34.403 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-11} closing ...
+2026-03-26 16:24:34.405 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-11} closed
+2026-03-26 16:24:34.413 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-26 16:24:34.418 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 16:24:34.422 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.xy.blog.controller.app.AppArticleController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@432509c]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476)
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/xy/blog/framework/web/domain/Result
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.xy.blog.framework.web.domain.Result
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 30 common frames omitted
+2026-03-26 16:24:35.981 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:24:35.981 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:24:35.981 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:24:36.399 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:24:36.399 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:24:36.454 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 54 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:24:36.608 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:24:36.608 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:36.608 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:24:36.608 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:24:36.644 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:24:36.644 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 660 ms
+2026-03-26 16:24:36.713 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:24:36.796 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-12} inited
+2026-03-26 16:24:37.072 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:24:37.074 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:24:38.061 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:24:38.387 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@301a4559
+2026-03-26 16:24:38.686 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:24:38.733 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:38.740 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:24:38.745 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 2.793 seconds (process running for 55175.241)
+2026-03-26 16:24:38.748 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 16:24:40.191 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 25 class path changes (0 additions, 1 deletion, 24 modifications)
+2026-03-26 16:24:40.192 [Thread-42] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:24:40.193 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:40.200 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:24:40.200 [Thread-42] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:40.203 [Thread-42] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-12} closing ...
+2026-03-26 16:24:40.207 [Thread-42] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-12} closed
+2026-03-26 16:24:40.297 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:24:40.299 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:24:40.299 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:24:40.699 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:24:40.699 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:24:40.770 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 69 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:24:40.964 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:24:40.965 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:40.965 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:24:40.965 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:24:40.996 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:24:40.996 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 694 ms
+2026-03-26 16:24:41.062 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:24:41.163 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-13} inited
+2026-03-26 16:24:41.362 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:24:41.362 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:24:42.017 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:24:42.215 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7e547180
+2026-03-26 16:24:42.427 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:24:42.468 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:24:42.474 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:24:42.478 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 2.216 seconds (process running for 55178.974)
+2026-03-26 16:24:42.480 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 16:29:03.282 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 27 class path changes (0 additions, 27 deletions, 0 modifications)
+2026-03-26 16:29:03.285 [Thread-49] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:29:03.286 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:29:03.298 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:29:03.298 [Thread-49] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:29:03.304 [Thread-49] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-13} closing ...
+2026-03-26 16:29:03.308 [Thread-49] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-13} closed
+2026-03-26 16:29:03.536 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:29:03.536 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:29:03.537 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:29:04.320 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:29:04.320 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:29:04.413 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 90 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:29:04.732 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:29:04.733 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:29:04.733 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:29:04.733 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:29:04.779 [restartedMain] INFO  o.a.c.c.C.[Tomcat-4].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:29:04.779 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1238 ms
+2026-03-26 16:29:04.895 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:29:05.054 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-14} inited
+2026-03-26 16:29:05.447 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:29:05.447 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:29:05.724 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+2026-03-26 16:29:05.724 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-14} closing ...
+2026-03-26 16:29:05.726 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-14} closed
+2026-03-26 16:29:05.731 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-26 16:29:05.737 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 16:29:05.742 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.xy.blog.controller.app.AppArticleController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@54ad43f6]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476)
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/xy/blog/system/dto/BlogArticleAppQueryDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.xy.blog.system.dto.BlogArticleAppQueryDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 30 common frames omitted
+2026-03-26 16:29:11.511 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:29:11.511 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:29:11.512 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:29:12.149 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:29:12.149 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:29:12.255 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 103 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:29:12.601 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:29:12.603 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:29:12.603 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:29:12.603 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:29:12.650 [restartedMain] INFO  o.a.c.c.C.[Tomcat-5].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:29:12.650 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1135 ms
+2026-03-26 16:29:12.743 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:29:12.846 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-15} inited
+2026-03-26 16:29:13.173 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:29:13.173 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:29:14.582 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:29:15.040 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4d1c17df
+2026-03-26 16:29:15.618 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:29:15.692 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:29:15.707 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:29:15.717 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.259 seconds (process running for 55452.211)
+2026-03-26 16:29:15.722 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 16:31:57.242 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 28 class path changes (0 additions, 28 deletions, 0 modifications)
+2026-03-26 16:31:57.246 [Thread-53] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:31:57.247 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:31:57.261 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:31:57.261 [Thread-53] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:31:57.267 [Thread-53] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-15} closing ...
+2026-03-26 16:31:57.272 [Thread-53] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-15} closed
+2026-03-26 16:31:57.488 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:31:57.490 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:31:57.490 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:31:58.315 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:31:58.315 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:31:58.432 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 114 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:31:58.794 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:31:58.797 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:31:58.798 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:31:58.798 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:31:58.888 [restartedMain] INFO  o.a.c.c.C.[Tomcat-5].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:31:58.888 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1394 ms
+2026-03-26 16:31:59.033 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:31:59.207 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-16} inited
+2026-03-26 16:31:59.672 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:31:59.672 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:32:00.016 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+2026-03-26 16:32:00.017 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-16} closing ...
+2026-03-26 16:32:00.019 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-16} closed
+2026-03-26 16:32:00.030 [restartedMain] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-03-26 16:32:00.042 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-03-26 16:32:00.049 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'appArticleController': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1228)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1194)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1130)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:991)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:628)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.xy.blog.BlogApplication.main(BlogApplication.java:20)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.xy.blog.controller.app.AppArticleController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@74d44278]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483)
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476)
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/xy/blog/system/dto/BlogArticleAppQueryDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676)
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465)
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.xy.blog.system.dto.BlogArticleAppQueryDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 30 common frames omitted
+2026-03-26 16:32:11.371 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:32:11.371 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:32:11.371 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:32:12.174 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:32:12.175 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:32:12.279 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 102 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:32:12.590 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:32:12.591 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:32:12.591 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:32:12.591 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:32:12.651 [restartedMain] INFO  o.a.c.c.C.[Tomcat-6].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:32:12.651 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1275 ms
+2026-03-26 16:32:12.765 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:32:12.892 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-17} inited
+2026-03-26 16:32:13.279 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:32:13.279 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:32:15.054 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:32:15.524 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@39783306
+2026-03-26 16:32:16.061 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:32:16.131 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:32:16.138 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:32:16.146 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.854 seconds (process running for 55632.639)
+2026-03-26 16:32:16.150 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-03-26 16:32:19.852 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 14 class path changes (6 additions, 0 deletions, 8 modifications)
+2026-03-26 16:32:19.853 [Thread-60] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:32:19.854 [tomcat-shutdown] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:32:19.868 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:32:19.868 [Thread-60] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:32:19.872 [Thread-60] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-17} closing ...
+2026-03-26 16:32:19.875 [Thread-60] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-17} closed
+2026-03-26 16:32:20.035 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 7284 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:32:20.035 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:32:20.036 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:32:20.729 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:32:20.729 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:32:20.846 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 115 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:32:21.197 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:32:21.198 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:32:21.198 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:32:21.198 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:32:21.248 [restartedMain] INFO  o.a.c.c.C.[Tomcat-6].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:32:21.249 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1209 ms
+2026-03-26 16:32:21.382 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:32:21.491 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-18} inited
+2026-03-26 16:32:21.872 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:32:21.872 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:32:23.186 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:32:23.616 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@404054ba
+2026-03-26 16:32:23.988 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:32:24.045 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:32:24.055 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:32:24.059 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 4.081 seconds (process running for 55640.551)
+2026-03-26 16:32:24.061 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   OssController matched:
+      - @ConditionalOnProperty (blog.oss.enabled=true) matched (OnPropertyCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2026-03-26 16:33:17.144 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-26 16:33:17.153 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-26 16:33:17.156 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-18} closing ...
+2026-03-26 16:33:17.159 [SpringApplicationShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-18} closed
+2026-03-26 16:33:28.477 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-03-26 16:33:28.547 [restartedMain] INFO  com.xy.blog.BlogApplication - Starting BlogApplication using Java 21.0.6 with PID 40840 (D:\BLOG\Blog\admin\target\classes started by 48957 in D:\BLOG\Blog)
+2026-03-26 16:33:28.548 [restartedMain] DEBUG com.xy.blog.BlogApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
+2026-03-26 16:33:28.549 [restartedMain] INFO  com.xy.blog.BlogApplication - The following 1 profile is active: "local"
+2026-03-26 16:33:28.632 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-26 16:33:28.633 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-26 16:33:30.275 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-03-26 16:33:30.279 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2026-03-26 16:33:30.389 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 87 ms. Found 0 Redis repository interfaces.
+2026-03-26 16:33:31.655 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-26 16:33:31.671 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:33:31.673 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-26 16:33:31.673 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.52]
+2026-03-26 16:33:31.745 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-03-26 16:33:31.745 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3111 ms
+2026-03-26 16:33:32.266 [restartedMain] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2026-03-26 16:33:32.910 [restartedMain] INFO  c.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2026-03-26 16:33:33.435 [restartedMain] DEBUG c.x.b.f.s.f.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2026-03-26 16:33:33.435 [restartedMain] DEBUG c.x.b.f.s.filter.UserContextFilter - Filter 'userContextFilter' configured for use
+2026-03-26 16:33:34.619 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-03-26 16:33:35.189 [restartedMain] INFO  c.b.m.e.s.MybatisPlusApplicationContextAware - Register ApplicationContext instances org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@27a6867e
+2026-03-26 16:33:35.722 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-03-26 16:33:35.770 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-03-26 16:33:35.798 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-26 16:33:35.811 [restartedMain] INFO  com.xy.blog.BlogApplication - Started BlogApplication in 8.251 seconds (process running for 9.56)
+2026-03-26 16:33:38.741 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-26 16:33:38.741 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-03-26 16:33:38.745 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-03-26 16:33:40.554 [http-nio-8080-exec-1] INFO  o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1666 ms
+2026-03-26 16:34:22.726 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectPublicTagList - ==>  Preparing: SELECT t.tag_id AS tagId, t.tag_name AS tagName, t.sort_num AS sortNum, COUNT(DISTINCT a.article_id) AS articleCount FROM blog_tag t LEFT JOIN blog_article_tag bat ON t.tag_id = bat.tag_id LEFT JOIN blog_article a ON bat.article_id = a.article_id AND a.status = '1' WHERE t.status = '1' GROUP BY t.tag_id, t.tag_name, t.sort_num ORDER BY t.sort_num ASC, t.tag_id ASC
+2026-03-26 16:34:22.775 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectPublicTagList - ==> Parameters: 
+2026-03-26 16:34:22.840 [http-nio-8080-exec-2] DEBUG c.x.b.s.m.B.selectPublicTagList - <==      Total: 0
+2026-03-26 16:36:40.138 [http-nio-8080-exec-7] DEBUG c.x.b.s.m.B.selectPublicCategoryList - ==>  Preparing: SELECT c.category_id AS categoryId, c.category_name AS categoryName, c.sort_num AS sortNum, COUNT(a.article_id) AS articleCount FROM blog_article_category c LEFT JOIN blog_article a ON c.category_id = a.category_id AND a.status = '1' WHERE c.status = '1' GROUP BY c.category_id, c.category_name, c.sort_num ORDER BY c.sort_num ASC, c.category_id ASC
+2026-03-26 16:36:40.139 [http-nio-8080-exec-7] DEBUG c.x.b.s.m.B.selectPublicCategoryList - ==> Parameters: 
+2026-03-26 16:36:40.143 [http-nio-8080-exec-7] DEBUG c.x.b.s.m.B.selectPublicCategoryList - <==      Total: 0
+2026-03-26 16:36:46.929 [http-nio-8080-exec-6] ERROR c.x.b.f.w.h.GlobalExceptionHandler - System exception
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource app/article.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:585)
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.xy.blog.framework.security.filter.UserContextFilter.doFilterInternal(UserContextFilter.java:31)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.xy.blog.framework.security.filter.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:57)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-26 16:36:46.935 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource app/article.]
+2026-03-26 16:36:49.477 [http-nio-8080-exec-9] DEBUG c.x.b.s.m.B.selectPublicArticleDetail - ==>  Preparing: SELECT a.article_id AS articleId, a.title AS title, a.summary AS summary, a.cover_image AS coverImage, a.content_md AS contentMd, a.category_id AS categoryId, c.category_name AS categoryName, a.user_id AS authorId, COALESCE(NULLIF(u.nick_name, ''), u.user_name) AS authorName, a.publish_time AS publishTime, a.view_count AS viewCount, a.like_count AS likeCount, a.is_original AS isOriginal, a.original_url AS originalUrl, a.allow_comment AS allowComment FROM blog_article a LEFT JOIN blog_article_category c ON a.category_id = c.category_id LEFT JOIN blog_user u ON a.user_id = u.user_id WHERE a.article_id = ? AND a.status = '1' LIMIT 1
+2026-03-26 16:36:49.480 [http-nio-8080-exec-9] DEBUG c.x.b.s.m.B.selectPublicArticleDetail - ==> Parameters: 1(Long)
+2026-03-26 16:36:49.486 [http-nio-8080-exec-9] DEBUG c.x.b.s.m.B.selectPublicArticleDetail - <==      Total: 0
+2026-03-26 16:36:49.493 [http-nio-8080-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.xy.blog.framework.exception.BusinessException: 文章不存在或未发布]
+2026-03-26 16:37:10.284 [http-nio-8080-exec-10] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.xy.blog.framework.web.domain.Result<java.lang.Long> com.xy.blog.controller.app.AppUserArticleController.add(com.xy.blog.system.dto.BlogUserArticleCreateDto)]
+2026-03-26 16:37:16.967 [http-nio-8080-exec-1] ERROR c.x.b.f.w.h.GlobalExceptionHandler - System exception
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.authorization.method.ThrowingMethodAuthorizationDeniedHandler.handleDeniedInvocation(ThrowingMethodAuthorizationDeniedHandler.java:38)
+	at org.springframework.security.authorization.method.PreAuthorizeAuthorizationManager.handleDeniedInvocation(PreAuthorizeAuthorizationManager.java:108)
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.handle(AuthorizationManagerBeforeMethodInterceptor.java:287)
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.attemptAuthorization(AuthorizationManagerBeforeMethodInterceptor.java:260)
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:196)
+	at org.springframework.security.config.annotation.method.configuration.DeferringMethodInterceptor.invoke(DeferringMethodInterceptor.java:44)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.xy.blog.controller.app.AppUserArticleController$$SpringCGLIB$$0.add(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.xy.blog.framework.security.filter.UserContextFilter.doFilterInternal(UserContextFilter.java:31)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.xy.blog.framework.security.filter.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:57)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-26 16:37:16.970 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2026-03-26 16:39:07.569 [http-nio-8080-exec-4] ERROR c.x.b.f.w.h.GlobalExceptionHandler - System exception
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.authorization.method.ThrowingMethodAuthorizationDeniedHandler.handleDeniedInvocation(ThrowingMethodAuthorizationDeniedHandler.java:38)
+	at org.springframework.security.authorization.method.PreAuthorizeAuthorizationManager.handleDeniedInvocation(PreAuthorizeAuthorizationManager.java:108)
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.handle(AuthorizationManagerBeforeMethodInterceptor.java:287)
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.attemptAuthorization(AuthorizationManagerBeforeMethodInterceptor.java:260)
+	at org.springframework.security.authorization.method.AuthorizationManagerBeforeMethodInterceptor.invoke(AuthorizationManagerBeforeMethodInterceptor.java:196)
+	at org.springframework.security.config.annotation.method.configuration.DeferringMethodInterceptor.invoke(DeferringMethodInterceptor.java:44)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
+	at com.xy.blog.controller.app.AppUserArticleController$$SpringCGLIB$$0.list(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:258)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:191)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:991)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:896)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.xy.blog.framework.security.filter.UserContextFilter.doFilterInternal(UserContextFilter.java:31)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.xy.blog.framework.security.filter.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:57)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1775)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2026-03-26 16:39:07.577 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.security.authorization.AuthorizationDeniedException: Access Denied]
+2026-03-26 16:39:16.397 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectPublicArticlePage_mpCount - ==>  Preparing: SELECT COUNT(*) AS total FROM blog_article a WHERE a.status = '1'
+2026-03-26 16:39:16.398 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectPublicArticlePage_mpCount - ==> Parameters: 
+2026-03-26 16:39:16.406 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectPublicArticlePage_mpCount - <==      Total: 1
+2026-03-26 16:39:16.415 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectPublicArticlePage - ==>  Preparing: SELECT a.article_id AS articleId, a.title AS title, a.summary AS summary, a.cover_image AS coverImage, a.category_id AS categoryId, c.category_name AS categoryName, COALESCE(NULLIF(u.nick_name, ''), u.user_name) AS authorName, a.publish_time AS publishTime, a.view_count AS viewCount, a.is_top AS isTop FROM blog_article a LEFT JOIN blog_article_category c ON a.category_id = c.category_id LEFT JOIN blog_user u ON a.user_id = u.user_id WHERE a.status = '1' ORDER BY a.is_top DESC, a.publish_time DESC, a.article_id DESC LIMIT ?
+2026-03-26 16:39:16.417 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectPublicArticlePage - ==> Parameters: 10(Long)
+2026-03-26 16:39:16.433 [http-nio-8080-exec-5] DEBUG c.x.b.s.m.B.selectPublicArticlePage - <==      Total: 6
+2026-03-26 16:39:43.964 [http-nio-8080-exec-8] DEBUG c.x.b.s.m.B.selectPublicLatestArticleList - ==>  Preparing: SELECT a.article_id AS articleId, a.title AS title, a.summary AS summary, a.cover_image AS coverImage, a.category_id AS categoryId, c.category_name AS categoryName, COALESCE(NULLIF(u.nick_name, ''), u.user_name) AS authorName, a.publish_time AS publishTime, a.view_count AS viewCount, a.is_top AS isTop FROM blog_article a LEFT JOIN blog_article_category c ON a.category_id = c.category_id LEFT JOIN blog_user u ON a.user_id = u.user_id WHERE a.status = '1' ORDER BY a.publish_time DESC, a.article_id DESC LIMIT ?
+2026-03-26 16:39:43.968 [http-nio-8080-exec-8] DEBUG c.x.b.s.m.B.selectPublicLatestArticleList - ==> Parameters: 10(Integer)
+2026-03-26 16:39:43.973 [http-nio-8080-exec-8] DEBUG c.x.b.s.m.B.selectPublicLatestArticleList - <==      Total: 6
+2026-03-26 16:40:43.252 [http-nio-8080-exec-7] DEBUG c.x.b.s.m.B.selectPublicCategoryList - ==>  Preparing: SELECT c.category_id AS categoryId, c.category_name AS categoryName, c.sort_num AS sortNum, COUNT(a.article_id) AS articleCount FROM blog_article_category c LEFT JOIN blog_article a ON c.category_id = a.category_id AND a.status = '1' WHERE c.status = '1' GROUP BY c.category_id, c.category_name, c.sort_num ORDER BY c.sort_num ASC, c.category_id ASC
+2026-03-26 16:40:43.253 [http-nio-8080-exec-7] DEBUG c.x.b.s.m.B.selectPublicCategoryList - ==> Parameters: 
+2026-03-26 16:40:43.262 [http-nio-8080-exec-7] DEBUG c.x.b.s.m.B.selectPublicCategoryList - <==      Total: 3
+2026-03-26 16:40:55.237 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectPublicTagList - ==>  Preparing: SELECT t.tag_id AS tagId, t.tag_name AS tagName, t.sort_num AS sortNum, COUNT(DISTINCT a.article_id) AS articleCount FROM blog_tag t LEFT JOIN blog_article_tag bat ON t.tag_id = bat.tag_id LEFT JOIN blog_article a ON bat.article_id = a.article_id AND a.status = '1' WHERE t.status = '1' GROUP BY t.tag_id, t.tag_name, t.sort_num ORDER BY t.sort_num ASC, t.tag_id ASC
+2026-03-26 16:40:55.238 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectPublicTagList - ==> Parameters: 
+2026-03-26 16:40:55.242 [http-nio-8080-exec-6] DEBUG c.x.b.s.m.B.selectPublicTagList - <==      Total: 3
