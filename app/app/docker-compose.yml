@@ -1,0 +1,132 @@
+﻿version: "3.8"
+
+networks:
+  backend:
+    driver: bridge
+
+services:
+  mysql:
+    image: mysql:8.0.39
+    container_name: blog-mysql
+    restart: unless-stopped
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    environment:
+      TZ: ${TZ}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/initdb:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -uroot -p${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    mem_limit: 3g
+    cpus: 2
+    networks:
+      - backend
+
+  redis:
+    image: redis:7.2
+    container_name: blog-redis
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --requirepass
+      - ${REDIS_PASSWORD}
+      - --appendonly
+      - "yes"
+      - --maxmemory
+      - 512mb
+      - --maxmemory-policy
+      - allkeys-lru
+    volumes:
+      - ./redis/data:/data
+    ports:
+      - "127.0.0.1:6379:6379"
+    mem_limit: 1g
+    cpus: 0.5
+    networks:
+      - backend
+
+  app:
+    image: eclipse-temurin:21-jre
+    container_name: blog-app
+    restart: unless-stopped
+    working_dir: /app
+    env_file:
+      - ./.env
+    environment:
+      TZ: ${TZ}
+      SPRING_PROFILES_ACTIVE: prod
+      DB_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_DATABASE: ${REDIS_DATABASE}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
+      MAIL_FROM: ${MAIL_FROM}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+      TOKEN_EXPIRE_TIME: ${TOKEN_EXPIRE_TIME}
+      SECURITY_USERNAME: ${SECURITY_USERNAME}
+      SECURITY_PASSWORD: ${SECURITY_PASSWORD}
+      BLOG_OSS_ENABLED: ${BLOG_OSS_ENABLED}
+      BLOG_OSS_ENDPOINT: ${BLOG_OSS_ENDPOINT}
+      BLOG_OSS_ACCESS_KEY_ID: ${BLOG_OSS_ACCESS_KEY_ID}
+      BLOG_OSS_ACCESS_KEY_SECRET: ${BLOG_OSS_ACCESS_KEY_SECRET}
+      BLOG_OSS_BUCKET_NAME: ${BLOG_OSS_BUCKET_NAME}
+      BLOG_OSS_DOMAIN: ${BLOG_OSS_DOMAIN}
+    volumes:
+      - ./app/app.jar:/app/app.jar:ro
+      - ./app/logs:/app/logs
+    command:
+      - sh
+      - -c
+      - >
+        java -Xms512m -Xmx1024m -XX:+UseG1GC
+        -Dfile.encoding=UTF-8
+        -Duser.timezone=Asia/Shanghai
+        -jar /app/app.jar
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    expose:
+      - "8080"
+    mem_limit: 2g
+    cpus: 1.5
+    networks:
+      - backend
+
+  nginx:
+    image: nginx:1.25
+    container_name: blog-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/html:/usr/share/nginx/html:ro
+      - ./nginx/cert:/etc/nginx/cert:ro
+    depends_on:
+      - app
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - backend

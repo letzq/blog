@@ -39,3 +39,6 @@ logs/
 admin/src/main/resources/application-local.yml
 admin/src/main/resources/mail-local.yml
 admin/src/main/resources/oss-local.yml
+app/app/.env
+app/app/nginx/logs/
+app/app/app/logs/
